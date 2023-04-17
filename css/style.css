@@ -235,7 +235,7 @@ ul, ol {
   Header
 -----------------------*/
 
-.header-section.header-normal .menu-item {
+.hero-section.header-normal .menu-item {
 	-webkit-box-shadow: 0px 12px 15px rgba(36, 11, 12, 0.05);
 	box-shadow: 0px 12px 15px rgba(36, 11, 12, 0.05);
 }
@@ -290,7 +290,7 @@ ul, ol {
 	font-size: 13px;
 	font-weight: 700;
 	padding: 16px 28px 15px;
-	background: #dfa974;
+	background: #bd1515;
 	color: #ffffff;
 	text-transform: uppercase;
 	letter-spacing: 2px;
