@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <head>
@@ -14,7 +13,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <!-- <link rel="stylesheet" href="css/flaticon.css" type="text/css"> -->
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
@@ -76,7 +75,7 @@
     <div class="menu-item">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div class="logo">
                         <a href="./index.html">
                             <img src="img/logo2.JPG" alt="">
@@ -122,7 +121,7 @@
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
                         <h3>Booking your room</h3>
-                        <form action="#"><!-- form prenotazione -->
+                        <form action="#" onSubmit="return validaform();" method="post" name="check_avalaibility"><!-- form prenotazione -->
                             <div class="check-date">
                                 <label for="date-in">Check-in:</label>
                                 <input type="text" class="date-input" id="date-in">
@@ -136,21 +135,21 @@
                             <div class="select-option">
                                 <label for="guest">Guests:</label>
                                 <select id="guest">
-                                    <option value="">1 Adult</option>
-                                    <option value="">2 Adults</option>
-                                    <option value="">3 Adults</option>
-                                    <option value="">4 Adults</option>
-                                    <option value="">5 Adults</option>
-                                    <option value="">6 Adults</option><!--risolvere-->
+                                    <option value="1">1 Adult</option>
+                                    <option value="2">2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                    <option value="5">5 Adults</option>
+                                    <option value="6">6 Adults</option><!--risolvere-->
                                 </select>
                             </div>
                             <div class="select-option">
                                 <label for="room">Rooms:</label>
                                 <select id="room">
-                                    <option value="">Deluxe Superior</option>
-                                    <option value="">Deluxe Presidential</option>
-                                    <option value="">Suite Ambassador</option>
-                                    <option value="">Suite des Ingenieurs</option>
+                                    <option value="room1">Deluxe Superior</option>
+                                    <option value="room2">Deluxe Presidential</option>
+                                    <option value="room3">Suite Ambassador</option>
+                                    <option value="room4">Suite des Ingenieurs</option>
 
                                 </select>
                             </div>
@@ -167,7 +166,6 @@
             <div class="hs-item set-bg" data-setbg="img/index/5.jpeg"></div>
         </div>
     </section>
-    <!-- Hero Section End -->
 
     <!-- About Us Section Begin -->
     <section class="aboutus-section spad">
@@ -488,6 +486,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

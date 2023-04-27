@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pulsanti AJAX</title>
+	<script>
+		function loadContent(section) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById(section).innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", section + ".html", true);
+			xhttp.send();
+		}
+	</script>
+</head>
+<body>
+	<button onclick="loadContent('header')">Carica l'Header</button>
+	<button onclick="loadContent('sidebar')">Carica la Sidebar</button>
+	<button onclick="loadContent('main')">Carica il Main</button>
+	<button onclick="loadContent('footer')">Carica il Footer</button>
+	<header id="header">header</header>
+	<aside id="sidebar">sidebar</aside>
+	<main id="main">main</main>
+	<footer id="footer">footer</footer>
+</body>
+<header id="header">header</header>
+	<aside id="sidebar">sidebar</aside>
+	<main id="main">main</main>
+	<footer id="footer">footer</footer>
+</html>
