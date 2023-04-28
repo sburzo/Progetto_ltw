@@ -18,6 +18,14 @@ else {
 </head>
 <body>
     <?php
+    function validateEmail($mail) {
+        if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
     if(!$dbconn){
         echo "Impossibile connettersi al database";
         header("Location: error.html");
@@ -27,9 +35,13 @@ else {
     $mail = $_POST['email'];
     $nome = $_POST['name'];
     $msg = $_POST['msg'];
-
+    
     $query = "select * from lab.clienti where email = $1";
     $res = pg_query_params($dbconn, $query, array($mail));
+    if(validateEmail($mail)==1){
+        echo "Formato mail non valida";
+        die;
+    }
     if(!($tuple = pg_fetch_array($res,null, PGSQL_ASSOC))){
         header("Location: error.html");
         echo "The given email is not associated to any booking<br>";
@@ -38,7 +50,7 @@ else {
         $qi = "insert into lab.recensioni(nome, descrizione) values($1, $2)";
         $re = pg_query_params($dbconn, $qi, array($nome, $msg));
         if($re){
-            echo "Your Review has been Saved!<br>";
+            echo "Your Review has been Saved!";
             
         } else die;
     }

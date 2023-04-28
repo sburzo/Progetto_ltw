@@ -170,21 +170,41 @@
                             <p class="f-para">Descrizione.....</p>
                         </div>
                     </div>
-                    <!-- <div class="rd-reviews">
-                        <h4>Our Customers say about us</h4>
-                        <div class="review-item">
-                            
-                            <div class="ri-text">
-                                <span>27 Aug 2019</span>
+                    <div class="rd-reviews">
+                    <?php
+                            $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
+                                user=postgres password=adminPG") 
+                                 or die('Could not connect: ' . pg_last_error());
+                            echo'<h4>Our Customers say about us</h4><br>';
+                            if($dbconn){
+                                $query = "select * from lab.recensioni";
+                                $res = pg_query($dbconn, $query);
+                                $cont = 0;
                                 
-                                <h5>Brandon Kelley</h5>
-                                <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non numquam eius modi tempora. incidunt ut labore et dolore
-                                    magnam.</p>
-                            </div>
-                        </div>
+                                while($tuple = pg_fetch_array($res, null, PGSQL_ASSOC)){
+                                    $n = $tuple['nome'];
+                                    $d = $tuple['descrizione'];
+                                    echo '<div class="review-item">
+                                    <div class="ri-text">
+                                    <h5>' . $n . ' </h5>
+        
+                                        <p>' . $d . '</p>
+                                    </div>
+                                    
+                                    </div>';
+                                    $cont++;
+                                }
+                                if($cont == 0){
+                                    echo '<div class="ts-item"> There are no available testimonials</div>';
+                                }
+
+                            } else {
+                                echo '<div class="ts-item"> There are no available testimonials
+                                        </div>';
+                            }
+                    ?>
                        
-                    </div> -->
+                    </div> 
                     <div class="review-add">
                         <h4>Write your Review</h4>
                         <form action="leaveReview.php" method="POST" class="ra-form">
@@ -197,7 +217,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div>
-                                        <h5>Voto:</h5>
+                                        <h5>Rate:</h5>
                                         
                                     </div>
                                     <textarea name="msg" placeholder="Your Review"></textarea>

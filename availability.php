@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 else {
     $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
-                user=postgres password=adminPG") 
+                user=postgres password=1234") 
                 or die('Could not connect: ' . pg_last_error());
 }
 ?>
@@ -57,7 +57,7 @@ else {
                     <li class="active"><a href="./index.php">Home</a></li>
                     <li><a href="index.php#rooms">Rooms</a>
                         <ul class="dropdown">
-                            <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
+                            <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                             <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                             <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                             <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
@@ -99,7 +99,7 @@ else {
                                         <li class="active"><a href="./index.php">Home</a></li>
                                         <li><a href="#rooms">Rooms</a>
                                             <ul class="dropdown">
-                                                <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
+                                                <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                                                 <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                                                 <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                                                 <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>

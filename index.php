@@ -46,7 +46,7 @@
             <li class="active"><a href="./index.php">Home</a></li>
             <li><a href="#rooms">Rooms</a>
                 <ul class="dropdown">
-                    <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
+                    <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                     <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                     <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                     <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
@@ -89,7 +89,7 @@
                                 <li class="active"><a href="./index.php">Home</a></li>
                                 <li><a href="#rooms">Rooms</a>
                                     <ul class="dropdown">
-                                        <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
+                                        <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                                         <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                                         <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                                         <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
@@ -408,7 +408,7 @@
                         <?php
                             $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
                                 user=postgres password=adminPG") 
-                                or die('Could not connect: ' . pg_last_error());
+                                 or die('Could not connect: ' . pg_last_error());
 
                             if($dbconn){
                                 $query = "select * from lab.recensioni";
