@@ -39,11 +39,11 @@
 
     <div class="header-configure-area">
 
-        <a href="./index.html" class="bk-btn">Booking Now</a>
+        <a href="./index.php" class="bk-btn">Booking Now</a>
     </div>
     <nav class="mainmenu mobile-menu">
         <ul>
-            <li class="active"><a href="./index.html">Home</a></li>
+            <li class="active"><a href="./index.php">Home</a></li>
             <li><a href="#rooms">Rooms</a>
                 <ul class="dropdown">
                     <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a href="./index.php">
                             <img src="img/logo2.JPG" alt="">
                         </a>
                     </div>
@@ -86,7 +86,7 @@
                     <div class="nav-menu">
                         <nav class="mainmenu">
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li class="active"><a href="./index.php">Home</a></li>
                                 <li><a href="#rooms">Rooms</a>
                                     <ul class="dropdown">
                                         <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
@@ -121,35 +121,36 @@
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
                         <h3>Booking your room</h3>
-                        <form action="#" onSubmit="return validaform();" method="post" name="check_avalaibility"><!-- form prenotazione -->
+                        <form action="availability.php" method="post" onSubmit="return validaform();" name="check_avalaibility"><!-- form prenotazione -->
                             <div class="check-date">
                                 <label for="date-in">Check-in:</label>
-                                <input type="text" class="date-input" id="date-in">
+                                <input type="text" name="data_in" class="date-input" id="date-in" value="mm/dd/yyyy">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="check-date">
                                 <label for="date-out">Check-out:</label>
-                                <input type="text" class="date-input" id="date-out">
+                                <input type="text" name="data_out" class="date-input" id="date-out" value="mm/dd/yyyy">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="select-option">
                                 <label for="guest">Guests:</label>
-                                <select id="guest">
+                                <select id="guest" name="guests">
                                     <option value="1">1 Adult</option>
                                     <option value="2">2 Adults</option>
                                     <option value="3">3 Adults</option>
                                     <option value="4">4 Adults</option>
                                     <option value="5">5 Adults</option>
-                                    <option value="6">6 Adults</option><!--risolvere-->
+                                    <option value="6">6 Adults</option>
                                 </select>
                             </div>
                             <div class="select-option">
                                 <label for="room">Rooms:</label>
-                                <select id="room">
-                                    <option value="room1">Deluxe Superior</option>
-                                    <option value="room2">Deluxe Presidential</option>
-                                    <option value="room3">Suite Ambassador</option>
-                                    <option value="room4">Suite des Ingenieurs</option>
+                                <select id="room" name="room">
+                                    <option value="tutte le camere" checked>- All Rooms -</option>
+                                    <option value="deluxe_superior">Deluxe Superior</option>
+                                    <option value="deluxe_presidential">Deluxe Presidential</option>
+                                    <option value="suite_ambassador">Suite Ambassador</option>
+                                    <option value="suite_ingenieurs">Suite des Ingenieurs</option>
 
                                 </select>
                             </div>
@@ -403,36 +404,46 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="testimonial-slider owl-carousel">
-                        <div class="ts-item">
-                            <p>After a construction project took longer than expected, my husband, my daughter and I
-                                needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                                city, neighborhood and the types of housing options available and absolutely love our
-                                vacation at Sona Hotel.</p>
-                            <div class="ti-author">
+                        
+                        <?php
+                            $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
+                                user=postgres password=adminPG") 
+                                or die('Could not connect: ' . pg_last_error());
 
-                                <h5>  Alexander Vasquez</h5>
-                            </div>
-                            <img src="img/testimonial-logo.png" alt="">
-                        </div>
-                        <div class="ts-item">
-                            <p>After a construction project took longer than expected, my husband, my daughter and I
-                                needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                                city, neighborhood and the types of housing options available and absolutely love our
-                                vacation at Sona Hotel.</p>
-                            <div class="ti-author">
+                            if($dbconn){
+                                $query = "select * from lab.recensioni";
+                                $res = pg_query($dbconn, $query);
+                                $cont = 0;
+                                while($tuple = pg_fetch_array($res, null, PGSQL_ASSOC)){
+                                    $n = $tuple['nome'];
+                                    $d = $tuple['descrizione'];
+                                    echo '<div class="ts-item">
+                                    <p>' . $d . ' </p>
+                                    <div class="ti-author">
+        
+                                        <h5>' . $n . '</h5>
+                                    </div>
+                                    <img src="img/testimonial-logo.png" alt="">
+                                    </div>';
+                                    $cont++;
+                                }
+                                if($cont == 0){
+                                    echo '<div class="ts-item"> There are no available testimonials</div>';
+                                }
 
-                                <h5>  Alexander Vasquez</h5>
-                            </div>
-                            <img src="img/testimonial-logo.png" alt=""><br><br>
-                        </div>
+                            } else {
+                                echo '<div class="ts-item"> There are no available testimonials
+                                        </div>';
+                            }
+                        ?>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Testimonial Section End -->
-
-
+    <br>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
