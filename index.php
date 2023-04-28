@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
-                        <h3>Booking your room</h3>
+                        <h3>Book your room</h3>
                         <form action="availability.php" method="post" onSubmit="return validaform();" name="check_avalaibility"><!-- form prenotazione -->
                             <div class="check-date">
                                 <label for="date-in">Check-in:</label>
@@ -146,7 +146,7 @@
                             <div class="select-option">
                                 <label for="room">Rooms:</label>
                                 <select id="room" name="room">
-                                    <option value="tutte le camere" checked>- All Rooms -</option>
+                                    <option value="all the rooms" checked>- All Rooms -</option>
                                     <option value="deluxe_superior">Deluxe Superior</option>
                                     <option value="deluxe_presidential">Deluxe Presidential</option>
                                     <option value="suite_ambassador">Suite Ambassador</option>
@@ -271,7 +271,7 @@
                             <div class="hp-room-item set-bg" data-setbg="img/room0.jpg">
                                 <div class="hr-text">
                                     <h3>Deluxe Superior</h3>
-                                    <h2>220€<span>/Pernight</span></h2>
+                                    <h2>220€<span>/Night</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>
@@ -300,7 +300,7 @@
                             <div class="hp-room-item set-bg" data-setbg="img/room1.png">
                                 <div class="hr-text">
                                     <h3>Deluxe Presidential</h3>
-                                    <h2>280€<span>/Pernight</span></h2>
+                                    <h2>280€<span>/Night</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>
@@ -329,7 +329,7 @@
                             <div class="hp-room-item set-bg" data-setbg="img/suite0.jpg">
                                 <div class="hr-text">
                                     <h3>Suite Ambassador</h3>
-                                    <h2>350€<span>/Pernight</span></h2>
+                                    <h2>350€<span>/Night</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>
@@ -358,7 +358,7 @@
                             <div class="hp-room-item set-bg" data-setbg="img/suite1.png">
                                 <div class="hr-text">
                                     <h3>Suite des Ingénieurs</h3>
-                                    <h2>500€<span>/Pernight</span></h2>
+                                    <h2>500€<span>/Night</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>
