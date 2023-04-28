@@ -139,16 +139,16 @@
                     </div>
                 </div>
                 <div class="col-lg-7 offset-lg-1">
-                    <form action="contact.php" class="contact-form">  <!-- contact.php -->
+                    <form action="leaveReview.php" method="POST" name="review_form" class="contact-form">  <!-- contact.php -->
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
+                                <input type="text" name="name" placeholder="Name">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Email">
+                                <input type="text" name="email" placeholder="Email">
                             </div>
                             <div class="col-lg-12">
-                                <textarea placeholder="Leave us a Review of your stay :)"></textarea>
+                                <textarea name="msg" placeholder="Leave us a Review of your stay :)"></textarea>
                                 <button type="submit">Send</button>
                             </div>
                         </div>
