@@ -27,8 +27,8 @@ else {
         }
     }
     if(!$dbconn){
-        echo "Impossibile connettersi al database";
-        header("Location: error.html");
+        $_SESSION['show'] = "<b>Server is not responding<br>message: </b>Impossibile connettersi al database";
+        header("Location: error.php");
         die;
     }
 
@@ -43,8 +43,9 @@ else {
         die;
     }
     if(!($tuple = pg_fetch_array($res,null, PGSQL_ASSOC))){
-        header("Location: error.html");
-        echo "The given email is not associated to any booking<br>";
+        
+        $_SESSION['show'] = "The given email is not associated to any booking<br>Only customers can leave a review";
+        header("Location: error.php");
         die;
     } else {
         $qi = "insert into lab.recensioni(nome, descrizione) values($1, $2)";

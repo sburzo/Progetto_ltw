@@ -112,7 +112,17 @@
 <!-- Error Section Begin -->
 <section>
     <div class="errore">
-        We are Sorry<br>An Unauthorized Event Occurred
+        <?php
+
+            if($_SESSION['show'] == ''){
+                echo "We are Sorry<br>An Unauthorized Event Occurred";
+            } else {
+
+                echo $_SESSION['show'];
+                $_SESSION['show'] = '';
+            }
+        ?>
+        
     </div>
 </section>
 <!-- Error Section End -->

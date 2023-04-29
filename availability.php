@@ -179,8 +179,8 @@ else {
                     break;
                     };
                     default:{
-                        echo "the selected room is not allowed ";
-                        header("Location: error.html");
+                        $_SESSION['show'] = "the selected room is not allowed ";
+                        header("Location: error.php");
                         die;
                     }
                 }
