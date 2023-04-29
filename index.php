@@ -391,6 +391,7 @@
     <!-- Home Room Section End -->
 
     <!-- Testimonial Section Begin -->
+    <a name="reviews">
     <section class="testimonial-section">
         <div class="container">
             <div class="row">
@@ -401,6 +402,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="testimonial-slider owl-carousel">

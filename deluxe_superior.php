@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/hoc.css" type="text/css">
 </head>
 
 <body>
@@ -170,14 +171,15 @@
                             <p class="f-para">Descrizione.....</p>
                         </div>
                     </div>
-                    <div class="rd-reviews">
-                    <?php
+
+                    <div class="rd-reviews" id="secAjax">
+                        <?php
                             $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
                                 user=postgres password=adminPG") 
                                  or die('Could not connect: ' . pg_last_error());
-                            echo'<h4>Our Customers say about us</h4><br>';
+                            echo'<h4>What Customers say about us</h4><br>';
                             if($dbconn){
-                                $query = "select * from lab.recensioni";
+                                $query = "select * from lab.recensioni order by id limit 2";
                                 $res = pg_query($dbconn, $query);
                                 $cont = 0;
                                 
@@ -186,25 +188,23 @@
                                     $d = $tuple['descrizione'];
                                     echo '<div class="review-item">
                                     <div class="ri-text">
-                                    <h5>' . $n . ' </h5>
-        
-                                        <p>' . $d . '</p>
-                                    </div>
-                                    
-                                    </div>';
+                                        <h5>' . $n . ' </h5>
+                                        <p>' . $d . '</p>                                    
+                                    </div></div>';
                                     $cont++;
                                 }
                                 if($cont == 0){
                                     echo '<div class="ts-item"> There are no available testimonials</div>';
-                                }
+                                } else
+                                    echo '<button id="all_rev" class="revi">All the Reviews</button>';
 
                             } else {
-                                echo '<div class="ts-item"> There are no available testimonials
+                                echo '<div class="ts-item ri-text"> There are no available testimonials
                                         </div>';
                             }
-                    ?>
-                       
+                        ?>
                     </div> 
+
                     <div class="review-add">
                         <h4>Write your Review</h4>
                         <form action="leaveReview.php" method="POST" class="ra-form">
@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div>
-                                        <h5>Rate:</h5>
+                                        <h5>Review:</h5>
                                         
                                     </div>
                                     <textarea name="msg" placeholder="Your Review"></textarea>
@@ -318,6 +318,8 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/gestioneAjax.js"></script>
+
 </body>
 
 </html>
