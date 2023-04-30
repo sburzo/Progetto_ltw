@@ -25,9 +25,7 @@
                                 }
                                 if($cont == 0){
                                     echo '<div class="ts-item"> There are no available testimonials</div>';
-                                } else
-                                    echo 'button id="close_rev" class="revi">Less Reviews</a>';
-
+                                }
                             } else {
                                 echo '<div class="ts-item ri-text"> There are no available testimonials
                                         </div>';

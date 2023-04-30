@@ -46,7 +46,7 @@
             <li class="active"><a href="./index.php">Home</a></li>
             <li><a href="#rooms">Rooms</a>
                 <ul class="dropdown">
-                    <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                    <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
                     <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                     <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                     <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
@@ -89,7 +89,7 @@
                                 <li class="active"><a href="./index.php">Home</a></li>
                                 <li><a href="#rooms">Rooms</a>
                                     <ul class="dropdown">
-                                        <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                                        <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
                                         <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
                                         <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
                                         <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>

@@ -3,6 +3,7 @@
 <head>
 </head>
 <body>
+
 <?php
                             $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
                                 user=postgres password=adminPG") 
@@ -25,9 +26,7 @@
                                 }
                                 if($cont == 0){
                                     echo '<div class="ts-item"> There are no available testimonials</div>';
-                                } else
-                                    echo '<button id="all_rev" class="revi">All the Reviews</a>';
-
+                                }
                             } else {
                                 echo '<div class="ts-item ri-text"> There are no available testimonials
                                         </div>';
