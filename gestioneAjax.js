@@ -12,7 +12,11 @@ function caricaClose(){
     
     httpRequest.send();
 }
-caricaClose();
+$(document).ready(function(){
+
+    caricaClose();
+});
+
 
 function caricaAll(eve){
     var httpRequest = new XMLHttpRequest();  //CREO OGGETTO XHR !!
