@@ -5,7 +5,7 @@
 } 
 else {*/
     $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
-                user=postgres password=adminPG") 
+                user=postgres password=1234") 
                 or die('Could not connect: ' . pg_last_error());
 //}
 ?>
