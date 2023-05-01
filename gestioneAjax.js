@@ -8,7 +8,7 @@ function caricaClose(){
 
     httpRequest.onreadystatechange = gestisciRespAll;
     httpRequest.open("GET", "reviewsFirst.php", true);  //true => asincrona
-    btnAll.innerHTML = "Show less";
+    btnAll.innerHTML = "All the Reviews";
     
     httpRequest.send();
 }
