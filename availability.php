@@ -97,7 +97,7 @@ else {
                                 <nav class="mainmenu">
                                     <ul>
                                         <li class="active"><a href="./index.php">Home</a></li>
-                                        <li><a href="#rooms">Rooms</a>
+                                        <li><a href="index.php#rooms">Rooms</a>
                                             <ul class="dropdown">
                                                 <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
                                                 <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
@@ -116,6 +116,23 @@ else {
             </div>
         </header>
         <!-- fine Navbar -->
+        <!-- Breadcrumb Section Begin -->
+        <div class="breadcrumb-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-text">
+                            <h2>AVAILABLE ROOMS</h2>
+                            <div class="bt-option">
+                                <a href="./index.php">Home</a>
+                                <span>Room Selection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section End -->
 
         <?php
             if ($dbconn) {
@@ -125,7 +142,7 @@ else {
                 $guests = intval($_POST['guests']);
                 $room = $_POST['room'];
                 
-                echo "<h3>AVAILABLE ROOMS</h3> <br> 
+                echo " 
                     <div style='background-color: lightgrey;'><b>your preferences:</b>
                     <br> check-in: " . $data_in . ", check-out: " . $data_out . ", guests: " . $guests . ", " . $room . "</div>";
                 //$_SESSION['in'] = $data_in;
@@ -135,7 +152,6 @@ else {
                
                 //camere: 1-5 deluxe_superior, 6-9 deluxe_presidential, 10-12 suite_ambassador, 13-14 suite_ingenieurs
                 //posti:            3                       4                       4                       6
-                //if()
 
                 $query = null;
                 $res = null;
@@ -188,13 +204,18 @@ else {
                 echo "<table border=1>";
                 while ($tupla = pg_fetch_array($res, null, PGSQL_ASSOC)) {
                     echo "<tr>";
+                    
                     foreach ($tupla as $col_name => $value){ 
                         echo "<td>" .$col_name . " : " . $value . "</td>";
                         
                     }
                     echo '<td><div class="rdt-right">
-                                    
-                        <a href="#">Reserve this Room</a>
+                        
+                    <form action="booking/book.php" method="POST" name="booking">
+                        <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                        <input type="submit" value="Reserve this Room">
+                    </form>
+                        
                     </div></td>';
                     
                     echo "</tr>";
