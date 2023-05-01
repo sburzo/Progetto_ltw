@@ -53,7 +53,7 @@
                 </ul>
             </li>
             <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -96,7 +96,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
+                                <li><a href="./contact.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>

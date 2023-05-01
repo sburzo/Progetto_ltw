@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -54,7 +57,7 @@
                 </ul>
             </li>
             <li><a href="./about-us.html">About Us</a></li>
-            <li  class="active"><a href="./contact.html">Contact</a></li>
+            <li  class="active"><a href="./contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -97,7 +100,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
-                                <li  class="active"><a href="./contact.html">Contact</a></li>
+                                <li  class="active"><a href="./contact.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -138,14 +141,25 @@
                         </table>
                     </div>
                 </div>
+                
                 <div class="col-lg-7 offset-lg-1">
+                    <h5 id="statoRev" class="statoRev"> 
+                        <?php
+                                                        
+                            if(isset($_SESSION['stato'])){
+                                if($_SESSION['stato'] == 'saved')
+                                    echo "Your Review has been Saved!";
+                                    
+                            }session_unset();
+                        ?>
+                    </h5>
                     <form action="leaveReview.php" method="POST" name="review_form" class="contact-form">  <!-- contact.php -->
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" name="name" placeholder="Name">
+                                <input type="text" name="name" placeholder="Nome*">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="email" placeholder="Email">
+                                <input type="text" name="email" placeholder="Email*">
                             </div>
                             <div class="col-lg-12">
                                 <textarea name="msg" placeholder="Leave us a Review of your stay :)"></textarea>
