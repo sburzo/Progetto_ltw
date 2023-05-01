@@ -41,3 +41,4 @@ function gestisciRespAll(eve){
         document.getElementById("secAjax").innerHTML= eve.target.responseText;      
     }
 }
+

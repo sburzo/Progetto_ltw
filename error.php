@@ -1,9 +1,12 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
 
-    <title>Contact</title>
+    <title>Error</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -48,10 +51,10 @@
             <li><a href="./index.php">Home</a></li>
             <li><a href="#rooms">Rooms</a>
                 <ul class="dropdown">
-                    <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                    <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                    <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                    <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                    <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                    <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                    <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                    <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                 </ul>
             </li>
             <li><a href="./about-us.html">About Us</a></li>
@@ -91,10 +94,10 @@
                                 <li><a href="./index.php">Home</a></li>
                                 <li><a href="#rooms">Rooms</a>
                                     <ul class="dropdown">
-                                        <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                                        <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                                        <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                                        <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                                        <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                                        <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                                        <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                                        <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
@@ -114,13 +117,20 @@
     <div class="errore">
         <?php
 
-            if($_SESSION['show'] == ''){
-                echo "We are Sorry<br>An Unauthorized Event Occurred";
-            } else {
+            if(isset($_SESSION['show'])){
+                if($_SESSION['show'] == ''){
+                    echo "We are Sorry<br>An Unauthorized Event Occurred";
+                } else {
 
-                echo $_SESSION['show'];
-                $_SESSION['show'] = '';
+                    echo $_SESSION['show'];
+                    $_SESSION['show'] = '';
+                }
+
+            } else {
+                echo "We are Sorry<br>An Unauthorized Event Occurred";
             }
+            session_unset();
+           
         ?>
         
     </div>

@@ -1,9 +1,20 @@
+<?php
+/* if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    // PER LA SICUREZZA CSRF
+    header("Location: /");
+} 
+else {*/
+    $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
+                user=postgres password=adminPG") 
+                or die('Could not connect: ' . pg_last_error());
+//}
+?>
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     
-    <title>Deluxe Superior</title>
+    <title>temporary</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -115,10 +126,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Deluxe Superior</h2>
+                        <h2>AVAILABLE ROOMS</h2>
                         <div class="bt-option">
                             <a href="./index.php">Home</a>
-                            <span>Rooms</span>
+                            <span>Room Selection</span>
                         </div>
                     </div>
                 </div>
@@ -129,25 +140,23 @@
 
     <!-- Room Details Section Begin -->
     <section class="room-details-section spad">
-    <div id="zona-superior">
+    <div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="room-details-item">
-                        
-                        <div><img src="img/room0.jpg" alt=""></div>
-                                                         
-                        <div class="rd-text">
-                            <div class="rd-title">
-                                <h3>Deluxe Superior</h3>
-
-                                <!-- <div class="rdt-right">
+                        <div>
+                            <img src="img/room0.jpg" alt="">
+                            <h3>Deluxe Superior</h3>
+                        </div>                                                       
+                        <!-- <div class="rd-text">
+                            <div class="rd-title">                             
+                                <div class="rdt-right">
                                     
                                     <a href="#">Booking Now</a>
-                                </div> -->
-
+                                </div>
                             </div>
-                            <h2>220€<span>/Night</span></h2>
+                           <h2>220€<span>/Night</span></h2>
                             <table>
                                 <tbody>
                                     <tr>
@@ -168,70 +177,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <p class="f-para">Descrizione.....</p>
+                            <p class="f-para">Descrizione.....</p> -->
                         </div>
-                    </div>
-
-                    <div class="rd-reviews" id="secAjax">
-
-                    </div> 
-                    <button id="all_rev" class="revi">All the Reviews</button>
-                    <div><br></div>
-
-                    <div class="review-add">
-                        <h4>Write your Review</h4>
-                        <form action="leaveReview.php" method="POST" class="ra-form">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" name="name" placeholder="Nome*">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" name="email" placeholder="Email*">
-                                </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <h5>Review:</h5>
-                                        
-                                    </div>
-                                    <textarea name="msg" placeholder="Your Review"></textarea>
-                                    <button type="submit">Send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    </div>                   
                 </div>
-                <div class="col-lg-4">
-                    <div class="room-booking">
-                        <h3>Book your room</h3>
-                        <form action="availability.php" method="post" onSubmit="return validaform();" name="check_avalaibility"><!-- form prenotazione -->
-                            <div class="check-date">
-                                <label for="date-in">Check-in:</label>
-                                <input type="text" name="data_in" class="date-input" id="date-in" value="mm/dd/yyyy">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="check-date">
-                                <label for="date-out">Check-out:</label>
-                                <input type="text" name="data_out" class="date-input" id="date-out" value="mm/dd/yyyy">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="select-option">
-                                <label for="guest">Guests:</label>
-                                <select id="guest" name="guests">
-                                    <option value="1">1 Adult</option>
-                                    <option value="2">2 Adults</option>
-                                    <option value="3">3 Adults</option>
-                                </select>
-                            </div>
-                            <div class="select-option">
-                                <label for="room">Rooms:</label>
-                                <select id="room" name="room">
-                                    <option value="deluxe_superior">Deluxe Superior</option>
-                                </select>
-                            </div>
-                            <button type="submit">Check avalibility</button>
-                        </form>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -296,3 +246,4 @@
 </body>
 
 </html>
+

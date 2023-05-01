@@ -57,10 +57,10 @@ else {
                     <li class="active"><a href="./index.php">Home</a></li>
                     <li><a href="index.php#rooms">Rooms</a>
                         <ul class="dropdown">
-                            <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                            <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                            <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                            <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                            <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                            <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                            <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                            <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                         </ul>
                     </li>
                     <li><a href="./about-us.html">About Us</a></li>
@@ -99,10 +99,10 @@ else {
                                         <li class="active"><a href="./index.php">Home</a></li>
                                         <li><a href="index.php#rooms">Rooms</a>
                                             <ul class="dropdown">
-                                                <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                                                <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                                                <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                                                <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                                                <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                                                <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                                                <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                                                <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="./about-us.html">About Us</a></li>
@@ -204,19 +204,17 @@ else {
                 echo "<table border=1>";
                 while ($tupla = pg_fetch_array($res, null, PGSQL_ASSOC)) {
                     echo "<tr>";
-                    
+
                     foreach ($tupla as $col_name => $value){ 
                         echo "<td>" .$col_name . " : " . $value . "</td>";
                         
                     }
-                    echo '<td><div class="rdt-right">
-                        
-                    <form action="booking/book.php" method="POST" name="booking">
-                        <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
-                        <input type="submit" value="Reserve this Room">
-                    </form>
-                        
-                    </div></td>';
+                    echo '<td><div class="rdt-right">    
+                        <form action="booking/book.php" method="POST" name="booking">
+                            <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                            <input type="submit" value="Reserve this Room">
+                        </form>
+                        </div></td>';
                     
                     echo "</tr>";
                 }

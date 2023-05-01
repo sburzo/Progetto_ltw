@@ -1,9 +1,12 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     
-    <title>Suite Ambassador</title>
+    <title>Deluxe Presidential</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -48,10 +51,10 @@
                 <li><a href="./index.php">Home</a></li>
                 <li  class="active"><a href="index.php#rooms">Rooms</a>
                     <ul class="dropdown">
-                        <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                        <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                        <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                        <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                        <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                        <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                        <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                        <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                     </ul>
                 </li>
                 <li><a href="./about-us.html">About Us</a></li>
@@ -91,10 +94,10 @@
                                     <li><a href="./index.php">Home</a></li>
                                     <li class="active"><a href="index.php#rooms">Rooms</a>
                                         <ul class="dropdown">
-                                            <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                                            <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                                            <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                                            <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                                            <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                                            <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                                            <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                                            <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="./about-us.html">About Us</a></li>
@@ -115,7 +118,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Suite Ambassador</h2>
+                        <h2>Deluxe Presidential</h2>
                         <div class="bt-option">
                             <a href="./index.php">Home</a>
                             <span>Rooms</span>
@@ -135,11 +138,11 @@
                 <div class="col-lg-8">
                     <div class="room-details-item">
                         
-                        <div><img src="img/suite0.jpg" alt=""></div>
+                        <div><img src="img/room1.png" alt=""></div>
                                                          
                         <div class="rd-text">
                             <div class="rd-title">
-                                <h3>Suite Ambassadorr</h3>
+                                <h3>Deluxe Presidential</h3>
 
                                 <!-- <div class="rdt-right">
                                     
@@ -147,12 +150,12 @@
                                 </div> -->
 
                             </div>
-                            <h2>350€<span>/Night</span></h2>
+                            <h2>280€<span>/Night</span></h2>
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="r-o">Size:</td>
-                                        <td>85 ft</td>
+                                        <td>60 ft</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Capacity:</td>
@@ -180,6 +183,18 @@
 
                     <div class="review-add">
                         <h4>Write your Review</h4>
+                        <h5 id="statoRev" class="statoRev">
+                            <?php
+                                                        
+                                if(isset($_SESSION['stato'])){
+                                    if($_SESSION['stato'] == 'saved')
+                                        echo "Your Review has been Saved!";
+                                    
+                                    
+                                    //$_SESSION['stato'] == '';
+                                }session_unset();
+                            ?>
+                        </h5>
                         <form action="leaveReview.php" method="POST" class="ra-form">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -226,7 +241,7 @@
                             <div class="select-option">
                                 <label for="room">Rooms:</label>
                                 <select id="room" name="room">
-                                    <option value="suite_ambassador">Suite Ambassador</option>
+                                    <option value="deluxe_presidential">Deluxe Presidential</option>
                                 </select>
                             </div>
                             <button type="submit">Check avalibility</button>

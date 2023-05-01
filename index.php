@@ -46,10 +46,10 @@
             <li class="active"><a href="./index.php">Home</a></li>
             <li><a href="#rooms">Rooms</a>
                 <ul class="dropdown">
-                    <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                    <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                    <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                    <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                    <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                    <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                    <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                    <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                 </ul>
             </li>
             <li><a href="./about-us.html">About Us</a></li>
@@ -89,10 +89,10 @@
                                 <li class="active"><a href="./index.php">Home</a></li>
                                 <li><a href="#rooms">Rooms</a>
                                     <ul class="dropdown">
-                                        <li><a href="./deluxe_superior.html">Deluxe Superior</a></li>
-                                        <li><a href="./deluxe_presidential.html">Deluxe Presidential</a></li>
-                                        <li><a href="./suite_ambassador.html">Suite Ambassador</a></li>
-                                        <li><a href="./suite_des_ingenieurs.html">Suite des Ingénieurs</a></li>
+                                        <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
+                                        <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
+                                        <li><a href="./suite_ambassador.php">Suite Ambassador</a></li>
+                                        <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
@@ -146,7 +146,7 @@
                             <div class="select-option">
                                 <label for="room">Rooms:</label>
                                 <select id="room" name="room">
-                                    <option value="all the rooms" checked>- All Rooms -</option>
+                                    <option value="all the rooms" selected>- All Rooms -</option>
                                     <option value="deluxe_superior">Deluxe Superior</option>
                                     <option value="deluxe_presidential">Deluxe Presidential</option>
                                     <option value="suite_ambassador">Suite Ambassador</option>
@@ -292,7 +292,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="./deluxe_superior.html" class="primary-btn">More Details</a>
+                                    <a href="./deluxe_superior.php" class="primary-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -321,7 +321,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="./deluxe_presidential.html" class="primary-btn">More Details</a>
+                                    <a href="./deluxe_presidential.php" class="primary-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="./suite_ambassador.html" class="primary-btn">More Details</a>
+                                    <a href="./suite_ambassador.php" class="primary-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +379,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="./suite_des_ingenieurs.html" class="primary-btn">More Details</a>
+                                    <a href="./suite_des_ingenieurs.php" class="primary-btn">More Details</a>
                                 </div>
                             </div>
                         </div>

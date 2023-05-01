@@ -1,9 +1,12 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
-
-    <title>Hôtel des Ingénieurs - About us</title>
+    <meta charset="UTF-8">
+    
+    <title>Suite des Ingenieurs</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -20,6 +23,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/hoc.css" type="text/css">
 </head>
 
 <body>
@@ -28,7 +32,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Section Begin -->
+    <!-- Menu laterale mobile -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="canvas-open">
         <i class="icon_menu"></i>
@@ -37,15 +41,15 @@
         <div class="canvas-close">
             <i class="icon_close"></i>
         </div>
-
+    
         <div class="header-configure-area">
-
-            <a href="#" class="bk-btn">Booking Now</a>
+            
+            <a href="./index.php" class="bk-btn">Booking Now</a>
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
                 <li><a href="./index.php">Home</a></li>
-                <li><a href="./index.php#rooms">Rooms</a>
+                <li  class="active"><a href="index.php#rooms">Rooms</a>
                     <ul class="dropdown">
                         <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                         <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
@@ -53,8 +57,7 @@
                         <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                     </ul>
                 </li>
-                <li  class="active"><a href="./about-us.html">About Us</a></li>
-
+                <li><a href="./about-us.html">About Us</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -66,13 +69,13 @@
             <a href="#"><i class="fa fa-instagram"></i></a>
         </div>
         <ul class="top-widget">
-            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-        </ul>s
+            <li><i class="fa fa-phone"></i>(+39) 366-5439201</li>
+            <li><i class="fa fa-envelope"></i> info.hotels@gmail.com</li>
+        </ul>
     </div>
-    <!-- Offcanvas Menu Section End -->
+    <!-- fine menu mobile -->
 
-    <!-- Header Section Begin -->
+    <!-- Navbar -->
     <header class="header-section">
         <div class="menu-item">
             <div class="container">
@@ -89,7 +92,7 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li><a href="./index.php">Home</a></li>
-                                    <li><a href="./index.php#rooms">Rooms</a>
+                                    <li class="active"><a href="index.php#rooms">Rooms</a>
                                         <ul class="dropdown">
                                             <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                                             <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
@@ -97,8 +100,7 @@
                                             <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                         </ul>
                                     </li>
-                                    <li  class="active"><a href="./about-us.html">About Us</a></li>
-
+                                    <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                             </nav>
@@ -108,18 +110,18 @@
             </div>
         </div>
     </header>
-    <!-- Header End -->
-
+    <!-- fine Navbar -->
+                      
     <!-- Breadcrumb Section Begin -->
     <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>About Us</h2>
+                        <h2>Suite des Ingenieurs</h2>
                         <div class="bt-option">
                             <a href="./index.php">Home</a>
-                            <span>About Us</span>
+                            <span>Rooms</span>
                         </div>
                     </div>
                 </div>
@@ -128,108 +130,132 @@
     </div>
     <!-- Breadcrumb Section End -->
 
-    <!-- About Us Page Section Begin -->
-    <section class="aboutus-page-section spad">
+    <!-- Room Details Section Begin -->
+    <section class="room-details-section spad">
+    <div id="zona-superior">
         <div class="container">
-            <div class="about-page-text">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="ap-title">
-                            <h2>Welcome to </h2><h2>Hôtel des Ingénieurs</h2>
-                            <h4>a Sapienza Group Hotel</h4>
-                            <p>Built in 1910 during the Belle Epoque period, this hotel is located two minutes away from
-                                the Sapienza University Campus, with easy access to the city’s tourist attractions. It offers tastefully
-                                decorated rooms.</p>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="room-details-item">
+                        
+                        <div><img src="img/suite1.png" alt=""></div>
+                                                         
+                        <div class="rd-text">
+                            <div class="rd-title">
+                                <h3>Suite des Ingenieurs</h3>
+
+                                <!-- <div class="rdt-right">
+                                    
+                                    <a href="#">Booking Now</a>
+                                </div> -->
+
+                            </div>
+                            <h2>500€<span>/Night</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Size:</td>
+                                        <td>90 ft</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Capacity:</td>
+                                        <td>Max 6 guests</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Bed:</td>
+                                        <td>King Beds</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Services:</td>
+                                        <td>Wifi, Television, Bathroom,...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="f-para">Descrizione.....</p>
                         </div>
                     </div>
-                    <div class="col-lg-5 offset-lg-1">
-                        <ul class="ap-services">
-                            <li><i class="icon_check"></i> 20% Off On Accommodation.</li>
-                            <li><i class="icon_check"></i> Complimentary Daily Breakfast</li>
-                            <li><i class="icon_check"></i> 3 Pcs Laundry Per Day</li>
-                            <li><i class="icon_check"></i> Free Wifi.</li>
-                            <li><i class="icon_check"></i> Discount 20% if into Engineering ;)</li>
-                        </ul>
+
+                    <div class="rd-reviews" id="secAjax">
+
+                    </div> 
+                    <button id="all_rev" class="revi">All the Reviews</button>
+                    <div><br></div>
+
+                    <div class="review-add">
+                        <h4>Write your Review</h4>
+                        <h5 id="statoRev" class="statoRev">
+                            <?php
+                                                        
+                                if(isset($_SESSION['stato'])){
+                                    if($_SESSION['stato'] == 'saved')
+                                        echo "Your Review has been Saved!";
+                                    
+                                    
+                                    //$_SESSION['stato'] == '';
+                                }session_unset();
+                            ?>
+                        </h5>
+                        <form action="leaveReview.php" method="POST" class="ra-form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="name" placeholder="Nome*">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" name="email" placeholder="Email*">
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <h5>Review:</h5>
+                                        
+                                    </div>
+                                    <textarea name="msg" placeholder="Your Review"></textarea>
+                                    <button type="submit">Send</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-            <div class="about-page-services">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p1.jpg">
-                            <div class="api-text">
-                                <h3>Restaurants Services</h3>
+                <div class="col-lg-4">
+                    <div class="room-booking">
+                        <h3>Book your room</h3>
+                        <form action="availability.php" method="post" onSubmit="return validaform();" name="check_avalaibility"><!-- form prenotazione -->
+                            <div class="check-date">
+                                <label for="date-in">Check-in:</label>
+                                <input type="text" name="data_in" class="date-input" id="date-in" value="mm/dd/yyyy">
+                                <i class="icon_calendar"></i>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p2.jpg">
-                            <div class="api-text">
-                                <h3>Travel & Camping</h3>
+                            <div class="check-date">
+                                <label for="date-out">Check-out:</label>
+                                <input type="text" name="data_out" class="date-input" id="date-out" value="mm/dd/yyyy">
+                                <i class="icon_calendar"></i>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p3.jpg">
-                            <div class="api-text">
-                                <h3>Event & Party</h3>
+                            <div class="select-option">
+                                <label for="guest">Guests:</label>
+                                <select id="guest" name="guests">
+                                    <option value="1">1 Adult</option>
+                                    <option value="2">2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                    <option value="5">5 Adults</option>
+                                    <option value="6">6 Adults</option>
+                                </select>
                             </div>
-                        </div>
+                            <div class="select-option">
+                                <label for="room">Rooms:</label>
+                                <select id="room" name="room">
+                                    <option value="suite_ingenieurs">Suite des Ingenieurs</option>
+                                </select>
+                            </div>
+                            <button type="submit">Check avalibility</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
     </section>
-    <!-- About Us Page Section End -->
-
-   
-
-    <!-- Gallery Section Begin -->
-    <section class="gallery-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Our Gallery</span>
-                        <h2>Discover Our Work</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="gallery-item set-bg" data-setbg="img/restaurant0.jpg">
-                        <div class="gi-text">
-                            <h3>Starred Restaurant</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/ext0.jpg">
-                                <div class="gi-text">
-                                    <h3>The Venue</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/room2.jpg">
-                                <div class="gi-text">
-                                    <h3>Luxury Accommodation</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="gallery-item large-item set-bg" data-setbg="img/rooftop.jpg">
-                        <div class="gi-text">
-                            <h3>Rooftop Infinity Pool</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Gallery Section End -->
+    <!-- Room Details Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -263,15 +289,16 @@
                             </ul>
                         </div>
                     </div>
-                    
+                    <div class="col-lg-3 offset-lg-1">
+                
+                    </div>
                 </div>
             </div>
         </div>
-        
-        </div>
+      
     </footer>
     <!-- Footer Section End -->
-
+    
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -282,6 +309,8 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="gestioneAjax.js"></script>
+
 </body>
 
 </html>
