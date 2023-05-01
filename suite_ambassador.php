@@ -308,6 +308,7 @@ session_start();
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="gestioneAjax.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 
