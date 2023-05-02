@@ -8,13 +8,20 @@ else {
                 user=postgres password=adminPG") 
                 or die('Could not connect: ' . pg_last_error());
 }
+
+$id_cam = $_POST['id'];
+$guests = $_POST['guests'];
+$prezzo = $_POST['prezzo'];
+$data_in = $_POST['data_in'];
+$data_out = $_POST['data_out'];
+$notti = $_POST['notti'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
 
-    <title>Contact</title>
+    <title>Hôtel des Ingenieurs</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -35,8 +42,8 @@ else {
 </head>
 
 <body>
-   <!-- Page Preloder -->
-   <div id="preloder">
+<!-- Page Preloder -->
+<div id="preloder">
     <div class="loader"></div>
 </div>
 
@@ -66,7 +73,7 @@ else {
                 </ul>
             </li>
             <li><a href="../about-us.html">About Us</a></li>
-            <li  class="active"><a href="../contact.php">Contact</a></li>
+            <li><a href="../contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -91,7 +98,7 @@ else {
                 <div class="col-lg-2">
                     <div class="logo">
                         <a href="../index.php">
-                            <img src="img/logo2.JPG" alt="">
+                            <img src="../img/logo2.JPG" alt="">
                         </a>
                     </div>
                 </div>
@@ -109,7 +116,7 @@ else {
                                     </ul>
                                 </li>
                                 <li><a href="../about-us.html">About Us</a></li>
-                                <li  class="active"><a href="../contact.php">Contact</a></li>
+                                <li><a href="../contact.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -120,24 +127,158 @@ else {
 </header>
 <!-- fine Navbar -->
 
-<!-- Error Section Begin -->
-<section>
-    <div>
-        <?php
+<!-- registration Section Begin -->
+<!-- registration Section Begin -->
+<section class="room-details-section spad">
+<div id="zona-superior">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="room-details-item">
+                    
+                    <div><img src="img/room0.jpg" alt=""></div>
+                                                     
+                    <div class="rd-text">
+                        <div class="rd-title">
+                            <h3>Complete Booking</h3>
 
-            echo "id camera = " . $_POST['id'];
-            /* if($_SESSION['show'] == ''){
-                echo "We are Sorry<br>An Unauthorized Event Occurred";
-            } else {
+                            
 
-                echo $_SESSION['show'];
-                $_SESSION['show'] = '';
-            } */
-        ?>
-        
+                        </div>
+                       <!--  <h2>220€<span>/Night</span></h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="r-o">Size:</td>
+                                    <td>56 ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="r-o">Capacity:</td>
+                                    <td>Max 3 guests</td>
+                                </tr>
+                                <tr>
+                                    <td class="r-o">Bed:</td>
+                                    <td>King Beds</td>
+                                </tr>
+                                <tr>
+                                    <td class="r-o">Services:</td>
+                                    <td>Wifi, Television, Bathroom,...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="f-para">Descrizione.....</p> -->
+                    </div>
+                </div>
+
+                <div class="rd-reviews" id="secAjax">
+
+                </div>             
+
+                <div class="review-add">
+                    
+                    <form action="gettingSaved.php" method="POST" class="ra-form" onsubmit="return verifica();">
+                        <h4>Personal Information</h4>
+                        <div class="row">
+                            
+                            <div class="col-lg-6">
+                                <input type="text" name="nome" placeholder="Name*">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="cognome" placeholder="Surname*">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="email" name="email" placeholder="Email*">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="tel" placeholder="Tel*">
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12"><hr></div>
+
+                        </div>
+                        <h4>Create an Account</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>add a Password to be able to check your bookings</h5>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <input type="password" name="psw" placeholder="Password">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="password" name="psw2" placeholder="Redigit the Password">
+                            </div>
+
+                        </div>
+                        <?php
+                            echo '
+                            <input type="number" name="camera" value="' . $id_cam . '" style="display:none !important;">
+                            <input type="number" name="persone" value="' . $guests . '" style="display:none !important;">
+                            <input type="text" name="in" value="' . $data_in . '" style="display:none !important;">
+                            <input type="text" name="out" value="' . $data_out . '" style="display:none !important;">
+                            ';
+                         
+                        ?>
+                        <div class="row">
+                            <div class="col-lg-12"><hr></div>
+
+                        </div>
+                        <h4>Card Information</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h6></h6>
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" name="carta" placeholder="Card Number">
+
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="meseExp" name="exp" placeholder="Expiration" value="MM/YYYY" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="cvv" placeholder="CVV">
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit">Done</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="room-booking">
+                    <h3>Summary</h3>
+                    <form >
+                        <div class="check-date">
+                            <label for="date-in">Check-in:</label>
+                            <input type="text" class="date" value="<?php echo $data_in;?>" readonly>
+                        </div>
+                        <div class="check-date">
+                            <label for="date-out">Check-out:</label>
+                            <input type="text" class="date" value="<?php echo $data_out;?>" readonly>
+                        </div>
+                        <div class="check-date">
+                            <label for="guest">Guests:</label>
+                            <input type="text" class="date" value="<?php echo $guests;?>" readonly>
+                        </div>
+                        <div class="check-date">
+                            <label for="nights">Nights:</label>
+                            <input type="text" class="date" value="<?php echo $notti;?>" readonly>
+                        </div>
+                        <div class="check-date">
+                            <h4>Total:<h4>
+                            <input style="color: #cf0707;" type="text" class="date" value="<?php echo $prezzo;?> €" readonly>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
-<!-- Error Section End -->
+</section>    
+<!-- registration Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -148,7 +289,7 @@ else {
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="../img/footer-logo.png" alt="">
                                 </a>
                             </div>
                             <p>Discover our World</p>

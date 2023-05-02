@@ -8,11 +8,20 @@ else {
                 user=postgres password=adminPG") 
                 or die('Could not connect: ' . pg_last_error());
 }
+session_start();
+$data_in = $_POST['data_in'];
+$data_out = $_POST['data_out'];            
+
+if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
+    $_SESSION['show'] = "the given Date is not in a valid format ";
+    header("Location: error.php");
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8"> -->
     <title>Hôtel des Ingenieurs
     </title>
 
@@ -31,6 +40,8 @@ else {
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/hoc.css" type="text/css">
+
     </head>
 
     <body>
@@ -54,7 +65,7 @@ else {
             </div>
             <nav class="mainmenu mobile-menu">
                 <ul>
-                    <li class="active"><a href="./index.php">Home</a></li>
+                    <li><a href="./index.php">Home</a></li>
                     <li><a href="index.php#rooms">Rooms</a>
                         <ul class="dropdown">
                             <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
@@ -96,7 +107,7 @@ else {
                             <div class="nav-menu">
                                 <nav class="mainmenu">
                                     <ul>
-                                        <li class="active"><a href="./index.php">Home</a></li>
+                                        <li><a href="./index.php">Home</a></li>
                                         <li><a href="index.php#rooms">Rooms</a>
                                             <ul class="dropdown">
                                                 <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
@@ -137,14 +148,11 @@ else {
         <?php
             if ($dbconn) {
 
-                $data_in = $_POST['data_in'];
-                $data_out = $_POST['data_out'];
                 $guests = intval($_POST['guests']);
                 $room = $_POST['room'];
-                
                 echo " 
                     <div style='background-color: lightgrey;'><b>your preferences:</b>
-                    <br> check-in: " . $data_in . ", check-out: " . $data_out . ", guests: " . $guests . ", " . $room . "</div>";
+                    <br> check-in: " . $data_in . ", check-out: " . $data_out . ", guests: " . $guests . ", " . $room . "</div><br>";
                 //$_SESSION['in'] = $data_in;
                 //$_SESSION['out'] = $data_out;
                 //$_SESSION['guests'] = $guests;
@@ -201,59 +209,194 @@ else {
                     }
                 }
 
-                echo "<table border=1>";
-                while ($tupla = pg_fetch_array($res, null, PGSQL_ASSOC)) {
-                    echo "<tr>";
-
+                $notti = floor((strtotime($data_out) - strtotime($data_in)) / 86400);
+                //echo "<table border=1>";
+                $conta = 0;
+                $r1 = 0;
+                $r2 = 0;
+                $r3 = 0;
+                $r4 = 0;
+                while (($tupla = pg_fetch_array($res, null, PGSQL_ASSOC))!= null) {
+                    /*echo "<tr>";
                     foreach ($tupla as $col_name => $value){ 
                         echo "<td>" .$col_name . " : " . $value . "</td>";
                         
                     }
-                    echo '<td><div class="rdt-right">    
+                    echo '<td> giorni totale: ' . $prezzo . '</td><td><div class="rdt-right">    
                         <form action="booking/book.php" method="POST" name="booking">
                             <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
                             <input type="submit" value="Reserve this Room">
                         </form>
                         </div></td>';
-                    
                     echo "</tr>";
+                    */
+                    $cam = $tupla['nome'];
+                    switch($cam){
+                        case 'deluxe_superior':{
+                            $r1++;
+                            $prezzo = $notti * 220;
+                            echo '<section class="hero-section2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                    </div>
+                                    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                                        <div class="booking-form2">
+                                            <h3>Deluxe Superior</h3>
+                                            <h4 style="color: #cf0707;">Total: ' . $prezzo .'€</h4>
+                                            <h5>220€ /night  |  ' . $notti .' nights</h5>
+                                            <h6>price for up to 3 guests</h6>
+                                            <form action="booking/book.php" method="POST" name="booking">
+                                                <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                                                <input type="number" name="notti" value="' . $notti . '" style="display:none !important;">
+                                                <input type="number" name="guests" value="' . $guests . '" style="display:none !important;">
+                                                <input type="number" name="prezzo" value="' . $prezzo . '" style="display:none !important;">
+                                                <input type="text" name="data_out" value="' . $data_out . '" style="display:none !important;">
+                                                <input type="text" name="data_in" value="' . $data_in . '" style="display:none !important;">
+                                                <button type="submit">Book Now</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-slider owl-carousel">
+                                <div class="hs-item set-bg" data-setbg="img/room0h.jpg"></div>
+                                <div class="hs-item set-bg" data-setbg="img/room01.png"></div>
+                                <div class="hs-item set-bg" data-setbg="img/bathSuite1h.jpg"></div>
+                            </div>
+                            </section>
+                            <br>';
+                            break;
+                        };
+                        case 'deluxe_presidential':{
+                            $r2++;
+                            $prezzo = $notti * 280;
+                            echo '<section class="hero-section2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                    </div>
+                                    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                                        <div class="booking-form2">
+                                            <h3>Deluxe Presidential</h3>
+                                            <h4 style="color: #cf0707;">Total: ' . $prezzo .'€</h4>
+                                            <h5>280€ /night  |  ' . $notti .' nights</h5>
+                                            <h6>price for up to 4 guests</h6>
+                                            <form action="booking/book.php" method="POST" name="booking">
+                                                <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                                                <input type="number" name="notti" value="' . $notti . '" style="display:none !important;">
+                                                <input type="number" name="guests" value="' . $guests . '" style="display:none !important;">
+                                                <input type="number" name="prezzo" value="' . $prezzo . '" style="display:none !important;">
+                                                <input type="text" name="data_out" value="' . $data_out . '" style="display:none !important;">
+                                                <input type="text" name="data_in" value="' . $data_in . '" style="display:none !important;">
+                                                <button type="submit">Book Now</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-slider owl-carousel">
+                                <div class="hs-item set-bg" data-setbg="img/room1h.png"></div>
+                                <div class="hs-item set-bg" data-setbg="img/bathSuite1h.jpg"></div>
+                                <div class="hs-item set-bg" data-setbg="img/bath0h.jpg"></div>
+                            </div>
+                            </section>
+                            <br>';
+                            break;
+                        };
+                        case 'suite_ambassador':{
+                            $r3++;
+                            $prezzo = $notti * 350;
+                            echo '<section class="hero-section2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                    </div>
+                                    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                                        <div class="booking-form2">
+                                            <h3>Suite Ambassador</h3>
+                                            <h4 style="color: #cf0707;">Total: ' . $prezzo . '€</h4>
+                                            <h5>350€ /night  |  ' . $notti .' nights</h5>
+                                            <h6>price for up to 4 guests</h6>
+                                            <form action="booking/book.php" method="POST" name="booking">
+                                                <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                                                <input type="number" name="notti" value="' . $notti . '" style="display:none !important;">
+                                                <input type="number" name="guests" value="' . $guests . '" style="display:none !important;">
+                                                <input type="number" name="prezzo" value="' . $prezzo . '" style="display:none !important;">
+                                                <input type="text" name="data_out" value="' . $data_out . '" style="display:none !important;">
+                                                <input type="text" name="data_in" value="' . $data_in . '" style="display:none !important;">
+                                                <button type="submit">Book Now</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-slider owl-carousel">
+                                <div class="hs-item set-bg" data-setbg="img/suite0h.jpg"></div>
+                                <div class="hs-item set-bg" data-setbg="img/suite01h.jpg"></div>
+                                <div class="hs-item set-bg" data-setbg="img/bath1.jpeg"></div>
+                            </div>
+                        </section>
+                        <br>';
+                            break;
+                        };
+                        case 'suite_ingenieurs':{
+                            $r4++;
+                            $prezzo = $notti * 500;
+                            echo '<section class="hero-section2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                    </div>
+                                    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                                        <div class="booking-form2">
+                                            <h3>Suite des Ingénieurs</h3>
+                                            <h4 style="color: #cf0707;">Total: ' . $prezzo .'€</h4>
+                                            <h5>500€ /night  |  ' . $notti .' nights</h5>
+                                            <h6>price for up to 6 guests</h6>
+                                            <form action="booking/book.php" method="POST" name="booking">
+                                                <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
+                                                <input type="number" name="notti" value="' . $notti . '" style="display:none !important;">
+                                                <input type="number" name="guests" value="' . $guests . '" style="display:none !important;">
+                                                <input type="number" name="prezzo" value="' . $prezzo . '" style="display:none !important;">
+                                                <input type="text" name="data_out" value="' . $data_out . '" style="display:none !important;">
+                                                <input type="text" name="data_in" value="' . $data_in . '" style="display:none !important;">
+                                                <button type="submit">Book Now</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-slider owl-carousel">
+                                <div class="hs-item set-bg" data-setbg="img/suite1h.png"></div>
+                                <div class="hs-item set-bg" data-setbg="img/suite11h.jpg"></div>            
+                                <div class="hs-item set-bg" data-setbg="img/rooftop0h.jpg"></div>
+                                <div class="hs-item set-bg" data-setbg="img/bath1.jpeg"></div>
+                            </div>
+                        </section>
+                        <br>';
+                            break;
+                        };
+                        default:{
+                            echo "<h3 style='color: red; text-align: center;'>The selected room does not match with the indexed database :(</h3>";
+                        }
+                            
+                    }
+
                 }
-                echo "</table>";
-
-                /*while($tuple = pg_fetch_array($res, null, PGSQL_ASSOC)){
-
-                    echo $tuple['id'] . " ";
-                    echo $tuple['posti'] . "<br>";
-                }*/
-
-
-                /*                
-                if (!($tuple = pg_fetch_array($result, null, PGSQL_ASSOC))) {
-                    echo "<h1>Non sembra che ti sia registrato/a</h1>
-                        <a href=../registrazione/index.html> Clicca qui per farlo </a>";
-
-                } else {
-
-                    //$password = $_POST['inputPassword'];
-                    $password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT); //hash della password
-
-                    echo $password;
-                    $q2 = "select * from lab.utenti where email = $1 and pswd = $2";
-                    $res = pg_query_params($dbconn, $q2, array($email, $password));
-
-                    if (!($tuple = pg_fetch_array($res, null, PGSQL_ASSOC))) {
-                        echo "<h1> La password e' sbagliata! </h1>
-                            <a href=index.html> Clicca qui per loggarti </a>";
-                    }
-                    else {
-                        $nome = $tuple['nome'];
-                        echo "<a href=../welcome.php?name=$nome> Premi qui </a>
-                            per inziare a usare il sito";
-                    }
-                } */
+                //echo "</table>";
+                $conta++;
+            }
+            if($conta == 0){
+                echo "<div style='text-align: center;'>
+                    <h3>We are sorry, there are no rooms available for the selected params</h3>
+                    <h4>Try to select different parameters to your preferences</h4></div>";
             }
         ?> 
-
 
         <!-- Footer Section Begin -->
         <footer class="footer-section">

@@ -78,6 +78,11 @@
         dateFormat: 'mm/dd/yy'
     });
 
+    $(".meseExp").datepicker({
+        minDate: 0,
+        dateFormat: 'mm/yy'
+    });
+
     /*------------------
 		Nice Select
 	--------------------*/
