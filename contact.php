@@ -156,13 +156,13 @@ session_start();
                     <form action="leaveReview.php" method="POST" name="review_form" class="contact-form">  <!-- contact.php -->
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" name="name" placeholder="Nome*">
+                                <input type="text" name="name" placeholder="Nome*"required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="email" placeholder="Email*">
+                                <input type="text" name="email" placeholder="Email*"required>
                             </div>
                             <div class="col-lg-12">
-                                <textarea name="msg" placeholder="Leave us a Review of your stay :)"></textarea>
+                                <textarea name="msg" placeholder="Leave us a Review of your stay :)"required></textarea>
                                 <button type="submit">Send</button>
                             </div>
                         </div>

@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 else {
     $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
-                user=postgres password=adminPG") 
+                user=postgres password=1234") 
                 or die('Could not connect: ' . pg_last_error());
 }
 
@@ -176,18 +176,18 @@ $notti = $_POST['notti'];
 
                 <div class="review-add">
                     
-                    <form action="gettingSaved.php" method="POST" class="ra-form" onsubmit="return verifica();">
+                    <form action="gettingSaved.php" method="POST" class="ra-form" name="ra_form" onSubmit="return verifica();">
                         <h4>Personal Information</h4>
                         <div class="row">
                             
                             <div class="col-lg-6">
-                                <input type="text" name="nome" placeholder="Name*">
+                                <input type="text" name="nome" placeholder="Name*" required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="cognome" placeholder="Surname*">
+                                <input type="text" name="cognome" placeholder="Surname*"required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="email" name="email" placeholder="Email*">
+                                <input type="email" name="email" placeholder="Email*"required>
                             </div>
                             <div class="col-lg-6">
                                 <input type="text" name="tel" placeholder="Tel*">
@@ -331,6 +331,7 @@ $notti = $_POST['notti'];
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 </html>

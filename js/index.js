@@ -27,3 +27,10 @@ function validaform(){
     
 
 }
+
+function verifica(){
+    if(isNaN(document.ra_form.tel.value)){
+        window.alert("Formato numero di telefono non valido");
+        return false;
+    }
+}
