@@ -268,7 +268,7 @@
                 <div class="hp-room-items">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
-                            <div class="hp-room-item set-bg" data-setbg="img/room0.jpg">
+                            <div class="hp-room-item set-bg " data-setbg="img/room0.jpg">
                                 <div class="hr-text">
                                     <h3>Deluxe Superior</h3>
                                     <h2>220€<span>/Night</span></h2>
