@@ -720,9 +720,13 @@ ul, ol {
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
+	color:#000;
+	text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+
+
 }
 .hp-room-items .hp-room-item .hr-text h3 {
-	color: #ffffff;
+	color: #000000;
 	margin-bottom: 15px;
 }
 .hp-room-items .hp-room-item .hr-text h2 {
@@ -737,21 +741,24 @@ ul, ol {
 	font-family: "Cabin", sans-serif;
 	font-size: 16px;
 	font-weight: 400;
-	color: #ffffff;
+	color: #000;
 }
 .hp-room-items .hp-room-item .hr-text table {
 	margin-bottom: 30px;
 }
 .hp-room-items .hp-room-item .hr-text table tbody tr td {
 	font-size: 16px;
-	color: #ffffff;
+	color: #000;
 	line-height: 36px;
 }
 .hp-room-items .hp-room-item .hr-text table tbody tr td.r-o {
 	width: 120px;
 }
 .hp-room-items .hp-room-item .hr-text .primary-btn:after {
-	background: #ffffff;
+	background: #ff0000;
+}
+.hp-room-items .hp-room-item .hr-text .primary-btn {
+	color: #000;
 }
 /*---------------------
   Testimonial Slider
