@@ -53,6 +53,41 @@ $cvv = $_POST['cvv'];
                 exp: " . $expi. "<br>
                 cvv: " . $cvv. "<br>";
 
+                $qi="select * from lab.clienti where lab.clienti.email=$1";
+                $re=pg_query_params($dbconn, $qi, array($mail));
+                if(!($tuple=pg_fetch_array($re,null, PGSQL_ASSOC))){
+                    $qi="insert into lab.clienti(nome,cognome,email,telefono,pswd) values ($1,$2,$3,$4,$5)";
+                    $re=pg_query_params($dbconn, $qi, array($nome, $cognome,$mail,$tel,$psw));
+                }
+
+                $qi="select lab.clienti.id from lab.clienti where lab.clienti.email=$1";
+                $re=pg_query_params($dbconn, $qi, array($mail));
+                $tuple = pg_fetch_assoc($re);
+
+                $qi="select * from lab.prenotazioni where 
+                lab.prenotazioni.camera=$1 and
+                lab.prenotazioni.data_in=$2 and
+                lab.prenotazioni.data_out=$3";
+                $re=pg_query_params($dbconn, $qi, array($id_cam,$data_in,$data_out));
+
+                if(!($tuple1=pg_fetch_array($re,null, PGSQL_ASSOC))){
+
+                    $id_cli=$tuple['id']; //recupero id_cli
+                    $qi="insert into lab.prenotazioni(cliente,camera,persone,data_in,data_out)
+                    values ($1,$2,$3,$4,$5)";
+                    $re = pg_query_params($dbconn, $qi, array($id_cli, $id_cam,$guests,$data_in,$data_out));
+                    if($re){
+                        echo "<br>Your booking has been Saved!";
+
+
+                    } else die;
+                }else{
+                    echo"<br>camera gia prenotata in queste date";
+                }
+
+
+
+
     ?>
     
 </body>
