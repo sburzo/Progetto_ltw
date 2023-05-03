@@ -230,15 +230,6 @@ ul, ol {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
-}/*session review*/
-.revok{
-	padding-top: 11px;
-	width: 300px;  height: 50px;
-	outline:1px solid #86f0ae;
-	border:1px solid #9af7b9e1;
-	border-radius: 5px;
-	text-align: center;
-	background-color: #dcfae7;
 }
 /*---------------------
   Header
@@ -396,7 +387,6 @@ ul, ol {
 }
 .menu-item .nav-menu .mainmenu li a {
 	font-size: 16px;
-	z-index: 1;
 	color: #19191a;
 	margin-right: 42px;
 	font-weight: 500;
@@ -406,61 +396,8 @@ ul, ol {
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
-	text-align: left;
 }
-
 .menu-item .nav-menu .mainmenu li a:after {
-	position: absolute;
-	left: 0;
-	top: 52px;
-	width: 100%;
-	height: 2px;
-	background: #cf0707;
-	content: "";
-	opacity: 0;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
-.menu-item .nav-menu1 {
-	text-align: left;
-}
-.menu-item .nav-menu1 .mainmenu {
-	display: inline-block;
-}
-.menu-item .nav-menu1 .mainmenu li {
-	list-style: none;
-	display: inline-block;
-	position: relative;
-	z-index: 1;
-}
-.menu-item .nav-menu1 .mainmenu li.active a:after {
-	opacity: 1;
-}
-.menu-item .nav-menu1 .mainmenu li:hover>a:after {
-	opacity: 1;
-}
-.menu-item .nav-menu1 .mainmenu li:hover .dropdown {
-	top: 77px;
-	opacity: 1;
-	visibility: visible;
-}
-.menu-item .nav-menu1 .mainmenu li a {
-	font-size: 16px;
-	z-index: 1;
-	color: #19191a;
-	margin-right: 42px;
-	font-weight: 500;
-	display: inline-block;
-	padding: 27px 0;
-	position: relative;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-	text-align: left;
-}
-
-.menu-item .nav-menu1 .mainmenu li a:after {
 	position: absolute;
 	left: 0;
 	top: 52px;
@@ -2011,6 +1948,3 @@ ul, ol {
 		margin-bottom: 10px;
 	}
 }
-
-
-

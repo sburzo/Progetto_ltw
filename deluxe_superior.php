@@ -178,13 +178,7 @@ session_start();
                     <div class="rd-reviews" id="secAjax">
 
                     </div> 
-                    <div class="menu-item">
-                        <div class="nav-menu1">
-                            <div class="mainmenu">
-                               <li> <a id="all_rev" class="butrev">All the Reviews</a></li>
-                            </div>  
-                        </div>
-                    </div>
+                    <button id="all_rev" class="revi">All the Reviews</button>
                     <div><br></div>
 
                     <div class="review-add">
@@ -194,7 +188,8 @@ session_start();
                                                         
                                 if(isset($_SESSION['stato'])){
                                     if($_SESSION['stato'] == 'saved')
-                                    echo '<div class="revok">Your Review has been Saved!</div><br>';
+                                        echo "Your Review has been Saved!";
+                                    
                                     
                                     //$_SESSION['stato'] == '';
                                 }session_unset();
