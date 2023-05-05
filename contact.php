@@ -148,7 +148,7 @@ session_start();
                                                         
                             if(isset($_SESSION['stato'])){
                                 if($_SESSION['stato'] == 'saved')
-                                    echo "Your Review has been Saved!";
+                                echo '<div class="revok">Your Review has been Saved!</div><br>';
                                     
                             }session_unset();
                         ?>
