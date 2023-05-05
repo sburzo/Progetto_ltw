@@ -169,7 +169,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                             (select C.id, C.posti, C.nome, C.descrizione from lab.camere C where C.posti >= $1)
                             except
                             (select C.id, C.posti, C.nome, C.descrizione from lab.camere C join lab.prenotazioni P on P.camera = C.id 
-                                where ($2 between P.data_in and P.data_out) or ($3 between P.data_in and P.data_out) 
+                                where ($2 between P.data_in and P.data_out) or ($3 between P.data_in and P.data_out) or ($2 < P.data_in and $3 > P.data_out)
                             )
                         ) as A order by A.id";
 
@@ -194,7 +194,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                             (select C.id, C.posti, C.nome, C.descrizione from lab.camere C where C.nome = $1 and C.posti >= $2)
                             except
                             (select C.id, C.posti, C.nome, C.descrizione from lab.camere C join lab.prenotazioni P on P.camera = C.id 
-                                where ($3 between P.data_in and P.data_out) or ($4 between P.data_in and P.data_out) 
+                                where ($3 between P.data_in and P.data_out) or ($4 between P.data_in and P.data_out) or ($3 < P.data_in and $4 > P.data_out)
                             )
                         ) as A order by A.id";
                         

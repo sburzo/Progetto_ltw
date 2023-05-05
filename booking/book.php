@@ -141,32 +141,8 @@ $notti = $_POST['notti'];
                     <div class="rd-text">
                         <div class="rd-title">
                             <h3>Complete Booking</h3>
-
-                            
-
                         </div>
-                       <!--  <h2>220€<span>/Night</span></h2>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td class="r-o">Size:</td>
-                                    <td>56 ft</td>
-                                </tr>
-                                <tr>
-                                    <td class="r-o">Capacity:</td>
-                                    <td>Max 3 guests</td>
-                                </tr>
-                                <tr>
-                                    <td class="r-o">Bed:</td>
-                                    <td>King Beds</td>
-                                </tr>
-                                <tr>
-                                    <td class="r-o">Services:</td>
-                                    <td>Wifi, Television, Bathroom,...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="f-para">Descrizione.....</p> -->
+                       
                     </div>
                 </div>
 
