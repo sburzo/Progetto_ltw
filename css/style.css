@@ -2006,3 +2006,21 @@ ul, ol {
 	text-align: center;
 	background-color: #dcfae7;
 }
+.bookok{
+	padding-top: 11px;
+	width: 100%;  height: 62px;
+	outline:1px solid #86f0ae;
+	border:1px solid #9af7b9e1;
+	border-radius: 5px;
+	text-align: center;
+	background-color: #dcfae7;
+}
+.bookKO{
+	padding-top: 11px;
+	width: 100%;  height: 62px;
+	outline:1px solid red;
+	border:1px solid red;
+	border-radius: 5px;
+	text-align: center;
+	background-color: rgb(235, 158, 158);
+}

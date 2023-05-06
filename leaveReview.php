@@ -40,7 +40,8 @@ session_start();
     $query = "select * from lab.clienti where email = $1";
     $res = pg_query_params($dbconn, $query, array($mail));
     if(validateEmail($mail)==1){
-        echo "Formato mail non valida";
+        $_SESSION['show'] = "Email: format not valid";
+        header("Location: error.php");
         die;
     }
     if(!($tuple = pg_fetch_array($res,null, PGSQL_ASSOC))){

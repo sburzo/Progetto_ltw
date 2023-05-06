@@ -15,6 +15,8 @@ $prezzo = $_POST['prezzo'];
 $data_in = $_POST['data_in'];
 $data_out = $_POST['data_out'];
 $notti = $_POST['notti'];
+
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,6 +24,7 @@ $notti = $_POST['notti'];
     <meta charset="UTF-8">
 
     <title>Hôtel des Ingenieurs</title>
+    <script src="../js/index.js"></script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -74,6 +77,7 @@ $notti = $_POST['notti'];
             </li>
             <li><a href="../about-us.html">About Us</a></li>
             <li><a href="../contact.php">Contact</a></li>
+            <li><a href="../myArea.html">My Area</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -117,6 +121,7 @@ $notti = $_POST['notti'];
                                 </li>
                                 <li><a href="../about-us.html">About Us</a></li>
                                 <li><a href="../contact.php">Contact</a></li>
+                                <li><a href="../myArea.html">My Area</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -157,16 +162,16 @@ $notti = $_POST['notti'];
                         <div class="row">
                             
                             <div class="col-lg-6">
-                                <input type="text" name="nome" placeholder="Name*" required>
+                                <input type="text" name="nome" placeholder="Name *" required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="cognome" placeholder="Surname*"required>
+                                <input type="text" name="cognome" placeholder="Surname *" required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="email" name="email" placeholder="Email*"required>
+                                <input type="email" name="email" placeholder="Email *" required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="tel" placeholder="Tel*">
+                                <input type="text" name="tel" placeholder="Tel *" required>
                             </div>
                             
                         </div>
@@ -178,13 +183,16 @@ $notti = $_POST['notti'];
                         <div class="row">
                             <div class="col-lg-12">
                                 <h5>add a Password to be able to check your bookings</h5>
+                    
                             </div>
 
                             <div class="col-lg-6">
-                                <input type="password" name="psw" placeholder="Password">
+                                <h6 id="psw1"></h6>
+                                <input type="password" name="psw" placeholder="Password" onchange="return verificaRetype1();">
                             </div>
                             <div class="col-lg-6">
-                                <input type="password" name="psw2" placeholder="Redigit the Password">
+                                <h6 id="psw2"></h6>
+                                <input type="password" name="psw2" placeholder="Redigit the Password" onchange="return verificaRetype();">
                             </div>
 
                         </div>
@@ -194,7 +202,9 @@ $notti = $_POST['notti'];
                             <input type="number" name="persone" value="' . $guests . '" style="display:none !important;">
                             <input type="text" name="in" value="' . $data_in . '" style="display:none !important;">
                             <input type="text" name="out" value="' . $data_out . '" style="display:none !important;">
+                            <input type="text" name="notti" value="' . $notti . '" style="display:none !important;">
                             ';
+                            $_SESSION['prezzo'] = $prezzo;
                          
                         ?>
                         <div class="row">
@@ -207,14 +217,15 @@ $notti = $_POST['notti'];
                                 <h6></h6>
                             </div>
                             <div class="col-lg-12">
-                                <input type="text" name="carta" placeholder="Card Number">
+                                <h6 id="cardType"></h6>
+                                <input type="text" name="carta" placeholder="Card Number *" onchange="return verificaCarta();" required>
 
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" class="meseExp" name="exp" placeholder="Expiration" value="MM/YYYY" readonly>
+                                <input type="text" class="meseExp" name="exp" placeholder="Expiration " value="MM/YYYY" readonly required>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" name="cvv" placeholder="CVV">
+                                <input type="text" name="cvv" placeholder="CVV *" onchange="return verificaCvv();" required>
                             </div>
                             <div class="col-lg-12">
                                 <button type="submit">Done</button>
@@ -307,7 +318,7 @@ $notti = $_POST['notti'];
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/index.js"></script>
+    
 </body>
 
 </html>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
@@ -54,6 +57,7 @@
             </li>
             <li><a href="./about-us.html">About Us</a></li>
             <li><a href="./contact.php">Contact</a></li>
+            <li><a href="./myArea.html">My Area</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -97,6 +101,7 @@
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
                                 <li><a href="./contact.php">Contact</a></li>
+                                <li><a href="./myArea.html">My Area</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -106,6 +111,30 @@
     </div>
 </header>
 <!-- fine Navbar -->
+
+<?php
+if(isset($_SESSION['success'])){
+    if($_SESSION['success'] == 'success'){
+        echo '<div class="bookok"><h5>Your Booking has been saved.<br> check your email for the confirmation</h5></div><br>';
+        $_SESSION['success'] = "";
+    }
+    if($_SESSION['success'] == 'notsuccess'){
+        echo '<div class="bookKO"><h5>We are Sorry. The selected room has already been booked.<br> try again to see if there are other available rooms</h5></div><br>';
+        $_SESSION['success'] = "";
+    }    
+}
+if(isset($_SESSION['mailer'])){
+    if($_SESSION['mailer'] == 'notsuccess'){
+        echo '<div class="bookKO"><h5>email not sent</h5></div><br>';
+        $_SESSION['mailer'] = "";
+    }
+    if($_SESSION['mailer'] == 'notsuccessKO'){
+        echo '<div class="bookKO"><h5>email not sent.<r>server has been unable to send the email</h5></div><br>';
+        $_SESSION['mailer'] = "";
+    }
+}
+?>
+
 
 
     <!-- Hero Section Begin -->

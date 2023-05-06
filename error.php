@@ -49,7 +49,7 @@ session_start();
     <nav class="mainmenu mobile-menu">
         <ul>
             <li><a href="./index.php">Home</a></li>
-            <li><a href="#rooms">Rooms</a>
+            <li><a href="index.php#rooms">Rooms</a>
                 <ul class="dropdown">
                     <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                     <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
@@ -58,7 +58,8 @@ session_start();
                 </ul>
             </li>
             <li><a href="./about-us.html">About Us</a></li>
-            <li  class="active"><a href="./contact.php">Contact</a></li>
+            <li><a href="./contact.php">Contact</a></li>
+            <li><a href="./myArea.html">My Area</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -92,7 +93,7 @@ session_start();
                         <nav class="mainmenu">
                             <ul>
                                 <li><a href="./index.php">Home</a></li>
-                                <li><a href="#rooms">Rooms</a>
+                                <li><a href="index.php#rooms">Rooms</a>
                                     <ul class="dropdown">
                                         <li><a href="./deluxe_superior.php">Deluxe Superior</a></li>
                                         <li><a href="./deluxe_presidential.php">Deluxe Presidential</a></li>
@@ -101,7 +102,8 @@ session_start();
                                     </ul>
                                 </li>
                                 <li><a href="./about-us.html">About Us</a></li>
-                                <li  class="active"><a href="./contact.php">Contact</a></li>
+                                <li><a href="./contact.php">Contact</a></li>
+                                <li><a href="./myArea.html">My Area</a></li>
                             </ul>
                         </nav>
                     </div>

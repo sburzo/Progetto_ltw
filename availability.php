@@ -76,6 +76,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                     </li>
                     <li><a href="./about-us.html">About Us</a></li>
                     <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="./myArea.html">My Area</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>
@@ -118,6 +119,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                                         </li>
                                         <li><a href="./about-us.html">About Us</a></li>
                                         <li><a href="./contact.php">Contact</a></li>
+                                        <li><a href="./myArea.html">My Area</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -217,19 +219,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                 $r3 = 0;
                 $r4 = 0;
                 while (($tupla = pg_fetch_array($res, null, PGSQL_ASSOC))!= null) {
-                    /*echo "<tr>";
-                    foreach ($tupla as $col_name => $value){ 
-                        echo "<td>" .$col_name . " : " . $value . "</td>";
-                        
-                    }
-                    echo '<td> giorni totale: ' . $prezzo . '</td><td><div class="rdt-right">    
-                        <form action="booking/book.php" method="POST" name="booking">
-                            <input type="number" name="id" value="'. $tupla['id'] .'" style="display:none !important;">
-                            <input type="submit" value="Reserve this Room">
-                        </form>
-                        </div></td>';
-                    echo "</tr>";
-                    */
+                    
                     $cam = $tupla['nome'];
                     switch($cam){
                         case 'deluxe_superior':{
@@ -386,16 +376,16 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                         }
                             
                     }
-
+                    $conta++;
                 }
-                //echo "</table>";
-                $conta++;
-            }
-            if($conta == 0){
-                echo "<div style='text-align: center;'>
+                if($conta == 0){
+                    echo "<div style='text-align: center;'>
                     <h3>We are sorry, there are no rooms available for the selected params</h3>
-                    <h4>Try to select different parameters to your preferences</h4></div>";
+                    <h4>Try to select different parameters to your preferences</h4></div><br>";
+                }
+                
             }
+            
         ?> 
 
         <!-- Footer Section Begin -->
