@@ -1,9 +1,12 @@
 
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <head>
 
-    <title>Hôtel des Ingénieurs - About us</title>
+    <title>Hôtel des Ingénieurs - MyArea</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -22,6 +25,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/hoc.css" type="text/css">
 </head>
 
 <body>
@@ -57,7 +61,7 @@
                 </li>
                 <li><a href="./about-us.html">About Us</a></li>
                 <li><a href="./contact.php">Contact</a></li>
-                <li class="active"><a href="./myArea.html">My Area</a></li>
+                <li class="active"><a href="./myArea.php">My Area</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -101,7 +105,7 @@
                                     </li>
                                     <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./contact.php">Contact</a></li>
-                                    <li class="active"><a href="./myArea.html">My Area</a></li>
+                                    <li class="active"><a href="./myArea.php">My Area</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -111,7 +115,12 @@
         </div>
     </header>
     <!-- Header End -->
-
+    <?php
+        if(isset($_SESSION['out']) && $_SESSION['out'] != ''){
+            echo '<div id="control"><h3>You are now logged out</h3></div>';
+            $_SESSION['out'] = '';
+        }
+    ?>
     <!-- Breadcrumb Section Begin -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -127,10 +136,49 @@
                 </div>
             </div>
         </div>
+        <div class="cent">
+            <img src="img/user.png" width="15%">
+            
+            
+                <?php
+                    if(isset($_SESSION['errore']) && $_SESSION['errore'] != ''){
+                        echo '<div id="control">email or password not correct<br>
+                        otherwise, there is no account for the given credentials</div>';
+                        $_SESSION['errore'] = '';
+                    }
+                ?>
+
+            
+            <br>
+              
+            <form action="private.php" method="POST" name="login_form" class="form" onsubmit="return verifyLogin();">
+                        
+                <div class="">
+                    <input type="email" name="username" placeholder="Email *" value="<?php  
+                        if(isset($_SESSION['em']) && $_SESSION['em'] != '')
+                            echo $_SESSION['em'];
+                    ?>" required>                        
+                </div>
+                <br>
+                <div class="">
+                    <input type="password" name="psw" placeholder="Password *" value="<?php  
+                        if(isset($_SESSION['pwww']) && $_SESSION['pwww'] != '')
+                            echo $_SESSION['pwww'];
+                    ?>" required>
+                </div>
+                <br>
+                <div class="">
+                    <button type="submit" class="primary-btn">Login</button>
+                </div>    
+                        
+            </form>        
+            
+        </div>
+
+
     </div>
     <!-- Breadcrumb Section End -->
-
-   
+    
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">

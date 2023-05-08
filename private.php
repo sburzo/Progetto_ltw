@@ -1,13 +1,63 @@
 
+<?php
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    // PER LA SICUREZZA CSRF
+    header("Location: /");
+}
+else {
+    $dbconn = pg_connect("host=localhost port=5432 dbname=LTWphp 
+                user=postgres password=adminPG") 
+                or die('Could not connect: ' . pg_last_error());
+}
+
+session_start();
+$user = $_POST['username'];
+$pwd = $_POST['psw'];
+
+
+$_SESSION['em'] = '';
+$_SESSION['pwww'] = '';
+
+
+
+
+    $qi = "select * from lab.clienti where lab.clienti.email = $1";
+    $re=pg_query_params($dbconn, $qi, array($user));
+    $control = pg_fetch_array($re, null, PGSQL_ASSOC);
+    if(!($control)){
+        //non è in clienti
+        $_SESSION['errore'] = 'errore';   
+        header("Location: ./myArea.php");
+        die;
+        
+    } else { // è in clienti
+
+        if($control['pswd'] != '' && !password_verify($pwd, $control['pswd'])){
+            //password inserita non è corretta
+            $_SESSION['errore'] = 'errore';   
+            header("Location: ./myArea.php");
+            die;
+        }
+        $_SESSION['em'] = $user;
+        $_SESSION['pwww'] = $pwd;
+        // LOGGATO
+    }
+
+
+    
+
+?>
 <!DOCTYPE html>
 
 <head>
 
-    <title>Hôtel des Ingénieurs - About us</title>
+    <title>Hôtel des Ingénieurs</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+    <script src="js/index.js"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -20,12 +70,15 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/hoc.css" type="text/css">
 </head>
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
+    <div id="unlocker">
+        <div class="unlocker">
+            <img class="unlocker" src="img/unlock.gif"/>
+        </div>
     </div>
 
     <!-- Offcanvas Menu Section Begin -->
@@ -53,10 +106,16 @@
                         <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                     </ul>
                 </li>
-                <li  class="active"><a href="./about-us.html">About Us</a></li>
-
+                <li><a href="./about-us.html">About Us</a></li>
                 <li><a href="./contact.php">Contact</a></li>
-                <li><a href="./myArea.php">My Area</a></li>
+                <li class="active"><a href="#">My Area</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Your Bookings</a></li>
+                        <li><a href="#">Your Reviews</a></li>
+                        <li><a href="./logout.php">Logout</a></li>
+                        <!-- <form action="logout.php" method="POST"><input type="submit" value="Logout"></form> -->
+                    </ul>
+                </li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -98,140 +157,30 @@
                                             <li><a href="./suite_des_ingenieurs.php">Suite des Ingénieurs</a></li>
                                         </ul>
                                     </li>
-                                    <li  class="active"><a href="./about-us.html">About Us</a></li>
-
+                                    <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./contact.php">Contact</a></li>
-                                    <li><a href="./myArea.php">My Area</a></li>
+                                    <li class="active"><a href="#">My Area</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Your Bookings</a></li>
+                                            <li><a href="#">Your Reviews</a></li>
+                                            <li><a href="./logout.php">Logout</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
+                <!-- menu utente loggato -->
+                
             </div>
         </div>
     </header>
     <!-- Header End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h2>About Us</h2>
-                        <div class="bt-option">
-                            <a href="./index.php">Home</a>
-                            <span>About Us</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb Section End -->
-
-    <!-- About Us Page Section Begin -->
-    <section class="aboutus-page-section spad">
-        <div class="container">
-            <div class="about-page-text">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="ap-title">
-                            <h2>Welcome to </h2><h2>Hôtel des Ingénieurs</h2>
-                            <h4>a Sapienza Group Hotel</h4>
-                            <p>Built in 1910 during the Belle Epoque period, this hotel is located two minutes away from
-                                the Sapienza University Campus, with easy access to the city’s tourist attractions. It offers tastefully
-                                decorated rooms.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 offset-lg-1">
-                        <ul class="ap-services">
-                            <li><i class="icon_check"></i> 20% Off On Accommodation.</li>
-                            <li><i class="icon_check"></i> Complimentary Daily Breakfast</li>
-                            <li><i class="icon_check"></i> 3 Pcs Laundry Per Day</li>
-                            <li><i class="icon_check"></i> Free Wifi.</li>
-                            <li><i class="icon_check"></i> Discount 20% if into Engineering ;)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="about-page-services">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p1.jpg">
-                            <div class="api-text">
-                                <h3>Restaurants Services</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p2.jpg">
-                            <div class="api-text">
-                                <h3>Travel & Camping</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p3.jpg">
-                            <div class="api-text">
-                                <h3>Event & Party</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Us Page Section End -->
+    <h1>welcome</h1>
 
    
-
-    <!-- Gallery Section Begin -->
-    <section class="gallery-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Our Gallery</span>
-                        <h2>Discover Our Work</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="gallery-item set-bg" data-setbg="img/restaurant0.jpg">
-                        <div class="gi-text">
-                            <h3>Starred Restaurant</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/ext0.jpg">
-                                <div class="gi-text">
-                                    <h3>The Venue</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/room1.png">
-                                <div class="gi-text">
-                                    <h3>Luxury Accommodation</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="gallery-item large-item set-bg" data-setbg="img/rooftop.jpg">
-                        <div class="gi-text">
-                            <h3>Rooftop Infinity Pool</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Gallery Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">

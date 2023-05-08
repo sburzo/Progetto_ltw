@@ -125,7 +125,7 @@ $cvv = $_POST['cvv'];
                         this is the Summary of your staying at Hotel des Ingenieurs<br>
                         <b>check-in: ' . $data_in . ' | check-out: ' . $data_out . '<br>
                         ' . $notti . ' nights | ' . $guests . ' guests<br></b></h3> 
-                        <div style="color: #cf0707"><b>Total: ' . $prezzo . '</b></div>
+                        <div style="color: #cf0707"><b>Total: ' . $prezzo . '€</b></div>
                         the bill has been sent on the card number: ' . $nCard . '<br>
                         <h4>Thank you from the Hotel des Ingenieurs,<br> we hope you enjoy your stay</h4><br>Sapienza © 2023';
                     $subj = 'Booking confirmation';
