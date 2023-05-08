@@ -14,12 +14,8 @@ session_start();
 $user = $_POST['username'];
 $pwd = $_POST['psw'];
 
-
 $_SESSION['em'] = '';
 $_SESSION['pwww'] = '';
-
-
-
 
     $qi = "select * from lab.clienti where lab.clienti.email = $1";
     $re=pg_query_params($dbconn, $qi, array($user));
@@ -43,8 +39,8 @@ $_SESSION['pwww'] = '';
         // LOGGATO
     }
 
-
-    
+    $id_cliente = $control['id'];
+    $nome = $control['nome'];    
 
 ?>
 <!DOCTYPE html>
@@ -110,8 +106,8 @@ $_SESSION['pwww'] = '';
                 <li><a href="./contact.php">Contact</a></li>
                 <li class="active"><a href="#">My Area</a>
                     <ul class="dropdown">
-                        <li><a href="#">Your Bookings</a></li>
-                        <li><a href="#">Your Reviews</a></li>
+                        <li><a href="#bookings">Your Bookings</a></li>
+                        <li><a href="#reviews">Your Reviews</a></li>
                         <li><a href="./logout.php">Logout</a></li>
                         <!-- <form action="logout.php" method="POST"><input type="submit" value="Logout"></form> -->
                     </ul>
@@ -161,8 +157,8 @@ $_SESSION['pwww'] = '';
                                     <li><a href="./contact.php">Contact</a></li>
                                     <li class="active"><a href="#">My Area</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Your Bookings</a></li>
-                                            <li><a href="#">Your Reviews</a></li>
+                                            <li><a href="#bookings">Your Bookings</a></li>
+                                            <li><a href="#reviews">Your Reviews</a></li>
                                             <li><a href="./logout.php">Logout</a></li>
                                         </ul>
                                     </li>
@@ -178,10 +174,143 @@ $_SESSION['pwww'] = '';
     </header>
     <!-- Header End -->
 
-    <h1>welcome</h1>
+     <!-- Breadcrumb Section Begin -->
+     <div class="breadcrumb-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-text">
+                            
+                            <div class="bt-option">
+                                <a href="./index.php">Home</a>
+                                <span>Personal Information</span>
+                            </div>
+                            <h2>
+                                Welcome <?php echo  $nome . ' ' . $control['cognome']?>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section End -->
 
-   
+    
+    <br>
+    <a name= "bookings">
+        <div class="breadcrumb-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-text">
+                            
+                            <!-- <div class="bt-option">
+                                <a href="./index.php">Home</a>
+                                <span>Personal Information</span>
+                            </div> -->
+                            <h2>
+                                Your Bookings
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <table class = "tabella1">
+                            <tr>
+                                <th><h3>Room</h3></th>
+                                <th><h3>Guests</h3></th>
+                                <th><h3>Check-in</h3></th>
+                                <th><h3>Check-out</h3></th>
+                            </tr>
+                            <hr>
+                            <?php
+                            $qi=" select * from lab.prenotazioni P join lab.camere C on P.camera = C.id 
+                                    where P.cliente = $1 order by P.id";
+                            $re=pg_query_params($dbconn, $qi, array($id_cliente));
 
+                            while($tuple = pg_fetch_array($re, null, PGSQL_ASSOC)){
+                                echo '<tr>
+                                <td>' . $tuple['nome'] . '</td>
+                                <td>' . $tuple['persone'] . '</td>
+                                <td>' . $tuple['data_in'] . '</td>
+                                <td>' . $tuple['data_out'] .  
+                                '</td>
+                                </tr>' ;
+                            }
+
+
+                            ?>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    <br>
+    <a name= "reviews">
+    <div class="breadcrumb-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-text">
+                            
+                            <!-- <div class="bt-option">
+                                <a href="./index.php">Home</a>
+                                <span>Personal Information</span>
+                            </div> -->
+                            <h2>
+                                Your Reviews
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <table class = "tabella1">
+                            
+                            <tr>
+                                <th><h3>Name</h3></th>
+                                <th><h3>Description</h3></th>
+                                <th><h3>Delete</h3></th>
+                            </tr>
+                            
+                            <hr>
+                            <?php
+                            $qi=" select * from lab.recensioni where cliente = $1";
+                            $re=pg_query_params($dbconn, $qi, array($user));
+
+                            $count = 0;
+                            while($tuple = pg_fetch_array($re, null, PGSQL_ASSOC)){
+                                echo '<tr>
+                                <td>' . $tuple['nome'] . '</td>
+                                <td>' . $tuple['descrizione'] .  
+                                '</td><td><form action="delete.php" method="POST">
+                                <input type="number" name="id_rec" value="' . $tuple['id'] .'" style="display:none !important;">
+                                <button type="submit"><img src="img/delete.png" width="50px"></button></form></td>
+                                </tr>' ;
+                            
+                                $count ++;
+                            }
+                            
+                            ?>
+                            
+                        </table>
+                        <?php
+                        if($count == 0){
+                            echo '<div class="norev">There are no Reviews for your account</div>
+                            <div class= "norevm" >When you write a new review it will appear here</div>';
+                        }
+                        ?>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <?php
+
+
+    ?>
+    <br>
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">

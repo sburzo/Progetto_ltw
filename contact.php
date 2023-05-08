@@ -148,11 +148,13 @@ session_start();
                     <h5 id="statoRev" class="statoRev"> 
                         <?php
                                                         
-                            if(isset($_SESSION['stato'])){
-                                if($_SESSION['stato'] == 'saved')
+                            if(isset($_SESSION['stato']) && $_SESSION['stato'] == 'saved'){
+                                
                                 echo '<div class="revok">Your Review has been Saved!</div><br>';
                                     
-                            }session_unset();
+                            }
+                            $_SESSION['stato'] = '';
+                            //session_unset();
                         ?>
                     </h5>
                     <form action="leaveReview.php" method="POST" name="review_form" class="contact-form">  <!-- contact.php -->

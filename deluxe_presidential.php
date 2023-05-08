@@ -194,13 +194,10 @@ session_start();
                         <h5 id="statoRev" class="statoRev">
                             <?php
                                                         
-                                if(isset($_SESSION['stato'])){
-                                    if($_SESSION['stato'] == 'saved')
-                                    echo '<div class="revok">Your Review has been Saved!</div><br>';
-                                    
-                                    
-                                    //$_SESSION['stato'] == '';
-                                }session_unset();
+                                if(isset($_SESSION['stato']) && $_SESSION['stato'] == 'saved'){                                
+                                    echo '<div class="revok">Your Review has been Saved!</div><br>';                                                       
+                                }
+                                $_SESSION['stato'] = '';
                             ?>
                         </h5>
                         <form action="leaveReview.php" method="POST" class="ra-form">

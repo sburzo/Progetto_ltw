@@ -6,6 +6,22 @@
     padding-bottom: 20%;
     text-align: center;
 }
+.norev {
+    color: darkgray;
+    font-style: italic;
+    font-size: 200%;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.norevm {
+    color: darkgray;
+    font-style: italic;
+    font-size: 120%;
+    padding-top: 2px;
+    padding-bottom: 30px;
+    text-align: center;
+}
 .revi {
     display: inline-block;
         font-size: 13px;
@@ -107,3 +123,25 @@
 	text-align: center;
 	background-color: rgb(235, 158, 158);
 }
+
+.tabella1{
+	width: 100%;
+	border: solid 3px;
+	border-color: white;
+	
+}
+.tabella1 tr{
+	width: 100%;
+	border: solid 1px;
+	border-color: white;
+	
+}
+.tabella1 tr td {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.tabella1 td button{
+	border-color: white;
+
+}
+
