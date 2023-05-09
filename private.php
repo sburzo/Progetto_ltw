@@ -216,10 +216,10 @@ $_SESSION['pwww'] = '';
                     <div class="col-lg-12">
                         <table class = "tabella1">
                             <tr>
-                                <th><h3>Room</h3></th>
-                                <th><h3>Guests</h3></th>
-                                <th><h3>Check-in</h3></th>
-                                <th><h3>Check-out</h3></th>
+                                <td><h3>Room</h3></td>
+                                <td><h3>Guests</h3></td>
+                                <td><h3>Check-in</h3></td>
+                                <td><h3>Check-out</h3></td>
                             </tr>
                             <hr>
                             <?php
@@ -268,9 +268,9 @@ $_SESSION['pwww'] = '';
                         <table class = "tabella1">
                             
                             <tr>
-                                <th><h3>Name</h3></th>
-                                <th><h3>Description</h3></th>
-                                <th><h3>Delete</h3></th>
+                                <td><h3>Name</h3></td>
+                                <td><h3>Description</h3></td>
+                                <td><h3>Delete</h3></td>
                             </tr>
                             
                             <hr>

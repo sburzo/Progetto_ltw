@@ -139,6 +139,8 @@
 .tabella1 tr td {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	padding-right: 40px;
+	padding-left: 15px;
 }
 .tabella1 td button{
 	border-color: white;
