@@ -11,6 +11,11 @@
         $("#preloder").delay(200).fadeOut("slow");
     });
 
+    $(window).on('load', function () {
+        $(".unlocker").delay(1600).fadeOut();
+        $("#unlocker").delay(1800).fadeOut("slow");
+    });
+
     /*------------------
         Background Set
     --------------------*/

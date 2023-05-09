@@ -76,7 +76,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                     </li>
                     <li><a href="./about-us.html">About Us</a></li>
                     <li><a href="./contact.php">Contact</a></li>
-                    <li><a href="./myArea.html">My Area</a></li>
+                    <li><a href="./myArea.php">My Area</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>
@@ -119,7 +119,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                                         </li>
                                         <li><a href="./about-us.html">About Us</a></li>
                                         <li><a href="./contact.php">Contact</a></li>
-                                        <li><a href="./myArea.html">My Area</a></li>
+                                        <li><a href="./myArea.php">My Area</a></li>
                                     </ul>
                                 </nav>
                             </div>

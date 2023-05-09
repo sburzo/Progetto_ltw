@@ -30,13 +30,13 @@ $nCard = $_POST['carta'];
 $expi = $_POST['exp'];
 $cvv = $_POST['cvv']; 
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+     use PHPMailer\PHPMailer\PHPMailer;
+     use PHPMailer\PHPMailer\SMTP;
+     use PHPMailer\PHPMailer\Exception;
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+     require 'PHPMailer/src/Exception.php';
+     require 'PHPMailer/src/PHPMailer.php';
+     require 'PHPMailer/src/SMTP.php';
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +87,7 @@ $cvv = $_POST['cvv'];
             if($control['pswd'] != '' && !password_verify($psw, $control['pswd'])){
                 //password inserita non è corretta
                 $_SESSION['show'] = '<div class="bookKO"><h5>wrong password for the given email.<br>leave the password field empty since you already are registered :)</h5></div>';
-                header("Location: ../error.php");
+                //header("Location: ../error.php");
                 die;
             }
             //password corretta o == ''
@@ -125,7 +125,7 @@ $cvv = $_POST['cvv'];
                         this is the Summary of your staying at Hotel des Ingenieurs<br>
                         <b>check-in: ' . $data_in . ' | check-out: ' . $data_out . '<br>
                         ' . $notti . ' nights | ' . $guests . ' guests<br></b></h3> 
-                        <div style="color: #cf0707"><b>Total: ' . $prezzo . '</b></div>
+                        <div style="color: #cf0707"><b>Total: ' . $prezzo . '€</b></div>
                         the bill has been sent on the card number: ' . $nCard . '<br>
                         <h4>Thank you from the Hotel des Ingenieurs,<br> we hope you enjoy your stay</h4><br>Sapienza © 2023';
                     $subj = 'Booking confirmation';

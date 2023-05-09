@@ -50,8 +50,8 @@ session_start();
         header("Location: error.php");
         die;
     } else {
-        $qi = "insert into lab.recensioni(nome, descrizione) values($1, $2)";
-        $re = pg_query_params($dbconn, $qi, array($nome, $msg));
+        $qi = "insert into lab.recensioni(nome, descrizione, cliente) values($1, $2, $3)";
+        $re = pg_query_params($dbconn, $qi, array($nome, $msg, $mail));
         if($re){
             //echo "Your Review has been Saved!";
             $_SESSION['stato'] = "saved";
