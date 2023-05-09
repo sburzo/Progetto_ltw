@@ -148,7 +148,7 @@ session_start();
             <br> 
         </div>
     </div>
-
+<!-- Breadcrumb Section end -->
     <section class="room-details-section spad">
 <div id="zona-superior">
     <div class="container">
@@ -180,12 +180,10 @@ session_start();
             </div>
         </div>
     </div>
-</div>
+</div><br>
 </section>    
 <!-- registration Section End -->
-    <!-- Breadcrumb Section End -->
     
-                    <br>
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">

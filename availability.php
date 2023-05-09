@@ -153,8 +153,8 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                 $guests = intval($_POST['guests']);
                 $room = $_POST['room'];
                 echo " 
-                    <div style='background-color: lightgrey;'><b>your preferences:</b>
-                    <br> check-in: " . $data_in . ", check-out: " . $data_out . ", guests: " . $guests . ", " . $room . "</div><br>";
+                    <div style='background-color: lightgrey;'><b>Your preferences:</b>
+                    <br>  Check-in:  " . $data_in . "  Check-out:  " . $data_out . "  Guests:  " . $guests . "</div><br>";
                 //$_SESSION['in'] = $data_in;
                 //$_SESSION['out'] = $data_out;
                 //$_SESSION['guests'] = $guests;
@@ -205,7 +205,7 @@ if(($data_in == 'mm/dd/yyyy') || ($data_out == 'mm/dd/yyyy')){
                     break;
                     };
                     default:{
-                        $_SESSION['show'] = "the selected room is not allowed ";
+                        $_SESSION['show'] = "The selected room is not allowed ";
                         header("Location: error.php");
                         die;
                     }
