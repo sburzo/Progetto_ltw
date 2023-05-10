@@ -83,8 +83,8 @@ $cvv = $_POST['cvv'];
         
             
         } else { // è in clienti
-
-            if($control['pswd'] != '' && !password_verify($psw, $control['pswd'])){
+            //$control['pswd']
+            if($psw != '' && !password_verify($psw, $control['pswd'])){
                 //password inserita non è corretta
                 $_SESSION['show'] = '<div class="bookKO"><h5>wrong password for the given email.<br>leave the password field empty since you already are registered :)</h5></div>';
                 header("Location: ../error.php");
