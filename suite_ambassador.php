@@ -202,17 +202,17 @@ session_start();
                         <form action="leaveReview.php" method="POST" class="ra-form">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="name" placeholder="Nome*">
+                                    <input type="text" name="name" placeholder="Nome*" required>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" name="email" placeholder="Email*">
+                                    <input type="text" name="email" placeholder="Email*" required>
                                 </div>
                                 <div class="col-lg-12">
                                     <div>
                                         <h5>Review:</h5>
                                         
                                     </div>
-                                    <textarea name="msg" placeholder="Your Review"></textarea>
+                                    <textarea name="msg" placeholder="Your Review" required></textarea>
                                     <button type="submit">Send</button>
                                 </div>
                             </div>
