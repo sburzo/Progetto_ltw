@@ -25,7 +25,8 @@ session_start();
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/hoc.css" type="text/css">
+    <!-- <link rel="stylesheet" href="css/hoc.css" type="text/css"> -->
+
 </head>
 
 <body>
@@ -74,7 +75,7 @@ session_start();
         <ul class="top-widget">
             <li><i class="fa fa-phone"></i> (12) 345 67890</li>
             <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-        </ul>s
+        </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
 
@@ -138,8 +139,7 @@ session_start();
         </div>
         <div class="cent">
             <img src="img/user.png" width="15%">
-            
-            
+
                 <?php
                     if(isset($_SESSION['errore']) && $_SESSION['errore'] != ''){
                         echo '<div id="control">email or password not correct<br>
@@ -148,38 +148,45 @@ session_start();
                     }
                 ?>
 
-            
-            <br>
-              
-            <form action="private.php" method="POST" name="login_form" class="form" onsubmit="return verifyLogin();">
-                        
-                <div class="">
-                    <input type="email" name="username" placeholder="Email *" value="<?php  
-                        if(isset($_SESSION['em']) && $_SESSION['em'] != '')
-                            echo $_SESSION['em'];
-                    ?>" required>                        
-                </div>
-                <br>
-                <div class="">
-                    <input type="password" name="psw" placeholder="Password *" value="<?php  
-                        if(isset($_SESSION['pwww']) && $_SESSION['pwww'] != '')
-                            echo $_SESSION['pwww'];
-                    ?>" required>
-                </div>
-                <br>
-                <div >
-                    <button type="submit" class="primary-btn">Login</button>
-                </div>    
-                        
-            </form>        
-            
+            <br> 
         </div>
-
-
     </div>
-    <!-- Breadcrumb Section End -->
+<!-- Breadcrumb Section end -->
+    <section class="room-details-section spad">
+<div id="zona-superior">
+    <div class="container">
+        <div class="row">
+            <div class="col">        
+                <div class="review-add">
+                    <form action="private.php" method="POST" class="ra-form" name="login_form" onSubmit="return verifyLogin();">
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <input type="email" name="username" placeholder="Email *"  value="<?php  
+                                        if(isset($_SESSION['em']) && $_SESSION['em'] != '')
+                                            echo $_SESSION['em'];
+                                        ?>" required>                        
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <input type="password" name="psw" placeholder="Password *" value="<?php  
+                                        if(isset($_SESSION['pwww']) && $_SESSION['pwww'] != '')
+                                            echo $_SESSION['pwww'];
+                                        ?>" required>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class=" primary-btn " >Login</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+</section>    
+<!-- registration Section End -->
     
-                    <br>
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">

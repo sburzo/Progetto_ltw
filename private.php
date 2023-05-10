@@ -66,7 +66,9 @@ $_SESSION['pwww'] = '';
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/hoc.css" type="text/css">
+
+    <!-- <link rel="stylesheet" href="css/hoc.css" type="text/css"> -->
+
 </head>
 
 <body>
@@ -228,8 +230,25 @@ $_SESSION['pwww'] = '';
                             $re=pg_query_params($dbconn, $qi, array($id_cliente));
 
                             while($tuple = pg_fetch_array($re, null, PGSQL_ASSOC)){
+                                $nome_camera;
+                                switch($tuple['nome']){
+                                    case 'deluxe_superior':
+                                        $nome_camera="Deluxe Superior";
+                                        break;
+                                    case 'deluxe_presidential':
+                                        $nome_camera="Deluxe Presidential";
+                                        break;
+                                    case 'suite_ambassador':
+                                        $nome_camera="Suite Ambassador";
+                                        break;
+                                    case 'suite_ingenieurs':
+                                        $nome_camera="Suite Des Ingenieurs";
+                                        break;
+                                    
+                                }
                                 echo '<tr>
-                                <td>' . $tuple['nome'] . '</td>
+                                <td>' . $nome_camera . '</td>
+
                                 <td>' . $tuple['persone'] . '</td>
                                 <td>' . $tuple['data_in'] . '</td>
                                 <td>' . $tuple['data_out'] .  

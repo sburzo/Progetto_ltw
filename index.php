@@ -472,9 +472,10 @@ if(isset($_SESSION['mailer'])){
                 </div>
             </div>
         </div>
+        <br><br>
     </section>
     <!-- Testimonial Section End -->
-    <br>
+    
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">

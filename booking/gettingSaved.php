@@ -30,13 +30,13 @@ $nCard = $_POST['carta'];
 $expi = $_POST['exp'];
 $cvv = $_POST['cvv']; 
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+      use PHPMailer\PHPMailer\PHPMailer;
+      use PHPMailer\PHPMailer\SMTP;
+      use PHPMailer\PHPMailer\Exception;
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+      require 'PHPMailer/src/Exception.php';
+      require 'PHPMailer/src/PHPMailer.php';
+      require 'PHPMailer/src/SMTP.php';
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +87,7 @@ $cvv = $_POST['cvv'];
             if($psw != '' && !password_verify($psw, $control['pswd'])){
                 //password inserita non è corretta
                 $_SESSION['show'] = '<div class="bookKO"><h5>wrong password for the given email.<br>leave the password field empty since you already are registered :)</h5></div>';
-                header("Location: ../error.php");
+                //header("Location: ../error.php");
                 die;
             }
             //password corretta o == ''

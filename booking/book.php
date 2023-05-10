@@ -236,6 +236,7 @@ session_start();
             </div>
             <div class="col-lg-4">
                 <div class="room-booking">
+                    <br>
                     <h3>Summary</h3>
                     <form >
                         <div class="check-date">
