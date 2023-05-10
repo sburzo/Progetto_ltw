@@ -184,7 +184,8 @@ session_start();
         </div>
     </div>
 </div><br>
-</section>    
+</section>
+<br>    
 <!-- registration Section End -->
     
     <!-- Footer Section Begin -->
