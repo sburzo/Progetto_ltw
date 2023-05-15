@@ -173,7 +173,7 @@ session_start();
                                     </tr>
                                 </tbody>
                             </table>
-                            <p class="f-para">Descrizione.....</p>
+                            
                         </div>
                     </div>
 
